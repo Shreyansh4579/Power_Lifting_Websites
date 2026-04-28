@@ -1,0 +1,378 @@
+/* ---------- Muscle Group Workout Pages Styles ---------- */
+
+/* Workout Cards */
+.workout-card {
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.workout-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--brand), var(--brand-2));
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+  z-index: 2;
+}
+
+.workout-card:hover::before {
+  transform: scaleX(1);
+}
+
+.workout-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.workout-card img {
+  transition: transform 0.3s ease;
+}
+
+.workout-card:hover img {
+  transform: scale(1.05);
+}
+
+/* Exercise Badges */
+.exercise-badge {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-left: 8px;
+}
+
+.exercise-badge.primary {
+  background: rgba(34, 197, 94, 0.1);
+  color: #22c55e;
+  border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+.exercise-badge.secondary {
+  background: rgba(59, 130, 246, 0.1);
+  color: #3b82f6;
+  border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+.exercise-badge.accessory {
+  background: rgba(168, 85, 247, 0.1);
+  color: #a855f7;
+  border: 1px solid rgba(168, 85, 247, 0.3);
+}
+
+/* Exercise Difficulty */
+.difficulty-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 8px;
+}
+
+.difficulty-dots {
+  display: flex;
+  gap: 2px;
+}
+
+.difficulty-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--line);
+}
+
+.difficulty-dot.active {
+  background: var(--brand);
+}
+
+.difficulty-label {
+  font-size: 0.7rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Exercise Equipment */
+.equipment-tag {
+  display: inline-block;
+  background: rgba(110, 231, 255, 0.1);
+  color: var(--brand);
+  padding: 2px 6px;
+  border-radius: 8px;
+  font-size: 0.7rem;
+  font-weight: 500;
+  margin-top: 4px;
+  border: 1px solid rgba(110, 231, 255, 0.2);
+}
+
+/* Modal Enhancements */
+.modal-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.modal .content {
+  line-height: 1.6;
+}
+
+.modal .content h3 {
+  color: var(--brand);
+  margin: 20px 0 12px 0;
+  font-size: 1.2rem;
+}
+
+.modal .content h4 {
+  color: var(--ink);
+  margin: 16px 0 8px 0;
+  font-size: 1.1rem;
+}
+
+.modal .content ul {
+  margin: 12px 0;
+  padding-left: 20px;
+}
+
+.modal .content li {
+  margin-bottom: 8px;
+  color: var(--muted);
+}
+
+.modal .content strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.modal .content p {
+  color: var(--muted);
+  margin-bottom: 12px;
+}
+
+/* Exercise Details */
+.exercise-details {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 20px;
+  margin: 16px 0;
+}
+
+.exercise-details h4 {
+  color: var(--brand);
+  margin-bottom: 12px;
+  font-size: 1.1rem;
+}
+
+.exercise-details p {
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+/* Sets and Reps */
+.sets-reps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 12px;
+  margin: 16px 0;
+}
+
+.set-rep-item {
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 12px;
+  text-align: center;
+}
+
+.set-rep-item .number {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--brand);
+  display: block;
+}
+
+.set-rep-item .label {
+  font-size: 0.8rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* RPE Indicators */
+.rpe-indicator {
+  display: inline-block;
+  background: rgba(110, 231, 255, 0.1);
+  color: var(--brand);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-left: 4px;
+}
+
+/* Technique Tips */
+.technique-tips {
+  background: linear-gradient(135deg, rgba(110, 231, 255, 0.05), rgba(167, 139, 250, 0.05));
+  border: 1px solid rgba(110, 231, 255, 0.2);
+  border-radius: 12px;
+  padding: 20px;
+  margin: 16px 0;
+}
+
+.technique-tips h4 {
+  color: var(--brand);
+  margin-bottom: 12px;
+  font-size: 1.1rem;
+}
+
+.technique-tips ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.technique-tips li {
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+/* Common Mistakes */
+.mistakes {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.05), rgba(220, 38, 38, 0.05));
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  border-radius: 12px;
+  padding: 20px;
+  margin: 16px 0;
+}
+
+.mistakes h4 {
+  color: #ef4444;
+  margin-bottom: 12px;
+  font-size: 1.1rem;
+}
+
+.mistakes ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.mistakes li {
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+/* Muscle Group Header */
+.muscle-group-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.muscle-group-header h1 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 800;
+  margin-bottom: 16px;
+  color: var(--ink);
+}
+
+.muscle-group-header p {
+  font-size: 1.2rem;
+  color: var(--muted);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* Exercise Grid */
+.exercise-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+  margin-top: 32px;
+}
+
+/* Exercise Categories */
+.exercise-categories {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 32px;
+}
+
+.category-filter {
+  padding: 8px 16px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--ink);
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.category-filter:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(110, 231, 255, 0.3);
+}
+
+.category-filter.active {
+  background: linear-gradient(90deg, var(--brand), var(--brand-2));
+  color: #0b1224;
+  border-color: transparent;
+  font-weight: 600;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .exercise-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .sets-reps {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .modal .content {
+    padding: 16px;
+  }
+  
+  .exercise-details,
+  .technique-tips,
+  .mistakes {
+    padding: 16px;
+  }
+  
+  .exercise-categories {
+    gap: 8px;
+  }
+  
+  .category-filter {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .sets-reps {
+    grid-template-columns: 1fr;
+  }
+  
+  .set-rep-item {
+    padding: 8px;
+  }
+  
+  .muscle-group-header h1 {
+    font-size: 2rem;
+  }
+  
+  .muscle-group-header p {
+    font-size: 1rem;
+  }
+}

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Powerlifting Hub — Abs & Core Workouts</title>
+  <meta name="description" content="Abs and core workouts to build a strong midline for powerlifting. RKC plank, dead bug, bird dog, and more."/>
+  <link rel="stylesheet" href="base.css"/>
+  <link rel="stylesheet" href="muscle-groups.css"/>
+  <script defer src="script.js"></script>
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="container">
+    <div class="brand">Powerlifting Hub</div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="workout.html">Workouts</a>
+      <a href="nutrition.html">Nutrition</a>
+      <a href="program.html">Programs</a>
+      <a href="coaching.html">Coaching</a>
+      <a href="progress.html">Progress</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="container section">
+  <div class="hero">
+    <h1>Abs & Core Workouts</h1>
+    <p>Build a strong core to support your powerlifting movements.</p>
+  </div>
+</header>
+
+<main class="container section">
+  <div class="grid grid-3">
+    <div class="card" onclick="Modal.open('workoutModal','RKC Plank', `
+      <p><b>Sets/Time:</b> 3×20–40s</p>
+      <p>Glutes squeezed, ribs down, push the floor away.</p>`)">
+      <img src="https://images.unsplash.com/photo-1599447421317-5c3b1b8b9f89?auto=format&fit=crop&w=1200&q=60" alt="Plank">
+      <div class="card-content">
+        <h3>RKC Plank <span class="badge">Core</span></h3>
+        <p>High-tension plank for bracing skill.</p>
+      </div>
+    </div>
+
+    <div class="card" onclick="Modal.open('workoutModal','Dead Bug', `
+      <p><b>Sets/Reps:</b> 3×10 each side</p>
+      <p>Keep lower back pressed to floor, move slowly.</p>`)">
+      <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=1200&q=60" alt="Dead Bug">
+      <div class="card-content">
+        <h3>Dead Bug <span class="badge">Core</span></h3>
+        <p>Anti-extension core exercise.</p>
+      </div>
+    </div>
+
+    <div class="card" onclick="Modal.open('workoutModal','Bird Dog', `
+      <p><b>Sets/Reps:</b> 3×10 each side</p>
+      <p>Keep hips level, extend opposite arm and leg.</p>`)">
+      <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=1200&q=60" alt="Bird Dog">
+      <div class="card-content">
+        <h3>Bird Dog <span class="badge">Core</span></h3>
+        <p>Anti-rotation core stability.</p>
+      </div>
+    </div>
+
+    <div class="card" onclick="Modal.open('workoutModal','Pallof Press', `
+      <p><b>Sets/Reps:</b> 3×10 each side</p>
+      <p>Resist rotation, keep core tight.</p>`)">
+      <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=1200&q=60" alt="Pallof Press">
+      <div class="card-content">
+        <h3>Pallof Press <span class="badge">Core</span></h3>
+        <p>Anti-rotation with cable resistance.</p>
+      </div>
+    </div>
+
+    <div class="card" onclick="Modal.open('workoutModal','Hanging Leg Raises', `
+      <p><b>Sets/Reps:</b> 3×8–12</p>
+      <p>Control the movement, avoid swinging.</p>`)">
+      <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=1200&q=60" alt="Leg Raises">
+      <div class="card-content">
+        <h3>Hanging Leg Raises <span class="badge">Abs</span></h3>
+        <p>Advanced lower ab exercise.</p>
+      </div>
+    </div>
+
+    <div class="card" onclick="Modal.open('workoutModal','Russian Twists', `
+      <p><b>Sets/Reps:</b> 3×20 total</p>
+      <p>Keep feet off ground, rotate from core.</p>`)">
+      <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=1200&q=60" alt="Russian Twists">
+      <div class="card-content">
+        <h3>Russian Twists <span class="badge">Obliques</span></h3>
+        <p>Rotational core strength.</p>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- Modal -->
+<div class="modal-backdrop" id="workoutModal">
+  <div class="modal">
+    <header>
+      <div class="modal-title">Title</div>
+      <button class="close" onclick="Modal.close('workoutModal')">×</button>
+    </header>
+    <div class="content">…</div>
+  </div>
+</div>
+
+<footer><div class="container center">© 2025 Powerlifting Hub</div></footer>
+</body>
+</html> 

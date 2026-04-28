@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Powerlifting Hub — Coaching</title>
+  <meta name="description" content="1-on-1 powerlifting coaching: custom programming, technique analysis, nutrition guidance, and meet prep."/>
+  <link rel="stylesheet" href="base.css"/>
+  <link rel="stylesheet" href="coaching.css"/>
+  <script defer src="script.js"></script>
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="container">
+    <div class="brand">Powerlifting Hub</div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="workout.html">Workouts</a>
+      <a href="nutrition.html">Nutrition</a>
+      <a href="program.html">Programs</a>
+      <a href="coaching.html">Coaching</a>
+      <a href="progress.html">Progress</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="container section">
+  <div class="hero">
+    <h1>Elite Powerlifting Coaching</h1>
+    <p>Transform your strength with personalized 1-on-1 coaching from certified powerlifting specialists. Get custom programming, technique analysis, and meet preparation tailored to your goals.</p>
+    <div class="hero-stats">
+      <div class="stat">
+        <span class="stat-number">9+</span>
+        <span class="stat-label">Clients Under My Coaching</span>
+      </div>
+      <div class="stat">
+        <span class="stat-number">95%</span>
+        <span class="stat-label">PR Success Rate</span>
+      </div>
+      <div class="stat">
+        <span class="stat-number">4+</span>
+        <span class="stat-label">Years Experience</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="container section">
+  <!-- Coach Profiles Section -->
+  <section class="coaches-section">
+    <h2 class="section-title">Meet Your Coach</h2>
+    <div class="coaches-grid">
+      <div class="coach-card">
+        <div class="coach-image">
+          <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=400&q=80" alt="Coach Shreyansh Rai">
+        </div>
+        <div class="coach-info">
+          <h3>Shreyansh Rai</h3>
+          <p class="coach-title">Professional Powerlifting Coach</p>
+          <p class="coach-credentials">4+ Years Experience • Professional Powerlifter • Jammu & Kashmir</p>
+          <p class="coach-bio">Professional powerlifter from Jammu and Kashmir with extensive experience in competitive lifting. Specializes in powerlifting technique, bodybuilding principles, and sports nutrition. I bring the unique perspective of training in challenging conditions and have helped athletes achieve their strength goals through personalized coaching.</p>
+          <div class="coach-specialties">
+            <span class="specialty-tag">Powerlifting</span>
+            <span class="specialty-tag">Bodybuilding</span>
+            <span class="specialty-tag">Nutrition</span>
+            <span class="specialty-tag">Technique</span>
+            <span class="specialty-tag">Meet Prep</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Coaching Plans Section -->
+  <section class="plans-section">
+    <h2 class="section-title">Choose Your Coaching Plan</h2>
+    <div class="plans-grid">
+      <div class="plan-card starter">
+        <div class="plan-header">
+          <h3>Starter</h3>
+          <div class="plan-price">
+            <span class="price">₹199</span>
+            <span class="period">/month</span>
+          </div>
+        </div>
+        <div class="plan-features">
+          <ul>
+            <li>✓ Custom 4-week training block</li>
+            <li>✓ Email support (48hr response)</li>
+            <li>✓ Initial consultation call</li>
+            <li>✓ Basic form check (monthly)</li>
+            <li>✓ Progress tracking spreadsheet</li>
+            <li>✓ Access to exercise library</li>
+          </ul>
+        </div>
+        <div class="plan-cta">
+          <button class="btn btn-outline" onclick="selectPlan('starter')">Get Started</button>
+        </div>
+      </div>
+      
+      <div class="plan-card plus featured">
+        <div class="plan-badge">Most Popular</div>
+        <div class="plan-header">
+          <h3>Plus</h3>
+          <div class="plan-price">
+            <span class="price">₹399</span>
+            <span class="period">/month</span>
+          </div>
+        </div>
+        <div class="plan-features">
+          <ul>
+            <li>✓ Everything in Starter</li>
+            <li>✓ Weekly programming adjustments</li>
+            <li>✓ Bi-weekly video form reviews</li>
+            <li>✓ Nutrition guidance & meal planning</li>
+            <li>✓ Weekly check-in calls</li>
+            <li>✓ Competition timeline planning</li>
+            <li>✓ Access to private community</li>
+          </ul>
+        </div>
+        <div class="plan-cta">
+          <button class="btn btn-primary" onclick="selectPlan('plus')">Choose Plus</button>
+        </div>
+      </div>
+      
+      <div class="plan-card elite">
+        <div class="plan-header">
+          <h3>Elite</h3>
+          <div class="plan-price">
+            <span class="price">₹499</span>
+            <span class="period">/month</span>
+          </div>
+        </div>
+        <div class="plan-features">
+          <ul>
+            <li>✓ Everything in Plus</li>
+            <li>✓ Unlimited form check videos</li>
+            <li>✓ Daily programming adjustments</li>
+            <li>✓ Meet day coaching & support</li>
+            <li>✓ Attempt selection strategy</li>
+            <li>✓ 24/7 WhatsApp support</li>
+            <li>✓ Quarterly in-person sessions</li>
+            <li>✓ Priority response time</li>
+          </ul>
+        </div>
+        <div class="plan-cta">
+          <button class="btn btn-outline" onclick="selectPlan('elite')">Go Elite</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works Section -->
+  <section class="process-section">
+    <h2 class="section-title">How Our Coaching Works</h2>
+    <div class="process-steps">
+      <div class="step">
+        <div class="step-number">1</div>
+        <div class="step-content">
+          <h3>Discovery & Assessment</h3>
+          <p>We'll discuss your goals, current training, equipment access, injury history, and competition timeline. This helps us create your personalized roadmap.</p>
+        </div>
+      </div>
+      
+      <div class="step">
+        <div class="step-number">2</div>
+        <div class="step-content">
+          <h3>Custom Programming</h3>
+          <p>Receive your first training block (4-8 weeks) with detailed exercise selection, sets, reps, and progression schemes tailored to your needs.</p>
+        </div>
+      </div>
+      
+      <div class="step">
+        <div class="step-number">3</div>
+        <div class="step-content">
+          <h3>Ongoing Support</h3>
+          <p>Regular check-ins, form reviews, and programming adjustments ensure you're always progressing optimally toward your goals.</p>
+        </div>
+      </div>
+      
+      <div class="step">
+        <div class="step-number">4</div>
+        <div class="step-content">
+          <h3>Peak Performance</h3>
+          <p>When it's time to compete, we'll help you peak perfectly with strategic deloads, attempt selection, and meet day coaching.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="faq-section">
+    <h2 class="section-title">Frequently Asked Questions</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <h3>How quickly will I see results?</h3>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>Most athletes see strength improvements within 2-4 weeks. Significant changes in technique and programming efficiency typically occur within the first training block (4-8 weeks).</p>
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <h3>What if I have limited equipment?</h3>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>We work with whatever equipment you have access to. Whether it's a full commercial gym, home gym, or minimal equipment, we'll create effective programming for your situation.</p>
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <h3>Do you work with beginners?</h3>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>Absolutely! We love working with beginners. We'll focus on building proper movement patterns, establishing good habits, and creating a solid foundation for long-term progress.</p>
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <h3>How often do we communicate?</h3>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>Communication frequency depends on your plan. Starter plans include monthly check-ins, Plus plans include weekly communication, and Elite plans include daily support and 24/7 access.</p>
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <h3>What if I need to pause my coaching?</h3>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>We understand life happens! You can pause your coaching at any time with 30 days notice. We'll provide you with a maintenance program to keep you on track until you're ready to resume.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="cta-content">
+      <h2>Ready to Transform Your Strength?</h2>
+      <p>Join hundreds of athletes who've achieved their powerlifting goals with our coaching. Book your free consultation call today.</p>
+      <div class="cta-buttons">
+        <a href="contact.html" class="btn btn-primary">Book Free Consultation</a>
+        <a href="#plans" class="btn btn-outline">View All Plans</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer><div class="container center">© 2025 Powerlifting Hub</div></footer>
+
+<script>
+// FAQ Toggle Functionality
+function toggleFAQ(element) {
+  const answer = element.nextElementSibling;
+  const toggle = element.querySelector('.faq-toggle');
+  
+  if (answer.style.display === 'block') {
+    answer.style.display = 'none';
+    toggle.textContent = '+';
+  } else {
+    answer.style.display = 'block';
+    toggle.textContent = '−';
+  }
+}
+
+// Plan Selection Functionality
+function selectPlan(plan) {
+  // Scroll to contact form
+  window.location.href = 'contact.html?plan=' + plan;
+}
+
+// Smooth scroll handled globally in script.js
+</script>
+
+</body>
+</html>
+

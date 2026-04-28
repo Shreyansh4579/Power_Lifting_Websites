@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Progress Tracker — Powerlifting Hub</title>
+  <meta name="description" content="Track your powerlifting progress with comprehensive analytics, PR tracking, and performance insights.">
+  <link rel="stylesheet" href="base.css"/>
+  <link rel="stylesheet" href="progress.css"/>
+  <script defer src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="container">
+    <div class="brand">Powerlifting Hub</div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="workout.html">Workouts</a>
+      <a href="nutrition.html">Nutrition</a>
+      <a href="program.html">Programs</a>
+      <a href="coaching.html">Coaching</a>
+      <a href="progress.html" class="active">Progress</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="nav-toggle" onclick="toggleNav()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+</nav>
+
+<header class="container section">
+  <div class="hero">
+    <h1>Progress Tracker</h1>
+    <p>Monitor your strength gains, track personal records, and analyze your performance over time.</p>
+  </div>
+</header>
+
+<main class="container section">
+  <!-- Quick Stats Overview -->
+  <section class="stats-overview">
+    <div class="section-header">
+      <h2>Your Progress Overview</h2>
+      <p>Key metrics and recent achievements</p>
+    </div>
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-icon">🏋️</div>
+        <div class="stat-content">
+          <div class="stat-number" id="totalLbs">0</div>
+          <div class="stat-label">Total (lbs)</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">📈</div>
+        <div class="stat-content">
+          <div class="stat-number" id="progressPercent">0%</div>
+          <div class="stat-label">Progress</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">🎯</div>
+        <div class="stat-content">
+          <div class="stat-number" id="prsThisMonth">0</div>
+          <div class="stat-label">PRs This Month</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">📊</div>
+        <div class="stat-content">
+          <div class="stat-number" id="daysTracked">0</div>
+          <div class="stat-label">Days Tracked</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PR Tracking Section -->
+  <section class="pr-tracking">
+    <div class="section-header">
+      <h2>Personal Records</h2>
+      <p>Track your best lifts in the big three</p>
+    </div>
+    <div class="pr-grid">
+      <div class="pr-card">
+        <div class="pr-header">
+          <h3>Bench Press</h3>
+          <div class="pr-weight" id="benchPr">0 lbs</div>
+        </div>
+        <div class="pr-form">
+          <label for="benchWeight">Weight (lbs)</label>
+          <input type="number" id="benchWeight" min="0" max="1000" placeholder="Enter weight">
+          <label for="benchDate">Date</label>
+          <input type="date" id="benchDate">
+          <button class="btn btn-primary" onclick="updatePR('bench')">Update PR</button>
+        </div>
+      </div>
+      
+      <div class="pr-card">
+        <div class="pr-header">
+          <h3>Squat</h3>
+          <div class="pr-weight" id="squatPr">0 lbs</div>
+        </div>
+        <div class="pr-form">
+          <label for="squatWeight">Weight (lbs)</label>
+          <input type="number" id="squatWeight" min="0" max="1000" placeholder="Enter weight">
+          <label for="squatDate">Date</label>
+          <input type="date" id="squatDate">
+          <button class="btn btn-primary" onclick="updatePR('squat')">Update PR</button>
+        </div>
+      </div>
+      
+      <div class="pr-card">
+        <div class="pr-header">
+          <h3>Deadlift</h3>
+          <div class="pr-weight" id="deadliftPr">0 lbs</div>
+        </div>
+        <div class="pr-form">
+          <label for="deadliftWeight">Weight (lbs)</label>
+          <input type="number" id="deadliftWeight" min="0" max="1000" placeholder="Enter weight">
+          <label for="deadliftDate">Date</label>
+          <input type="date" id="deadliftDate">
+          <button class="btn btn-primary" onclick="updatePR('deadlift')">Update PR</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Progress Chart Section -->
+  <section class="progress-chart">
+    <div class="section-header">
+      <h2>Progress Over Time</h2>
+      <p>Visualize your strength gains</p>
+    </div>
+    <div class="chart-container">
+      <canvas id="progressChart" width="400" height="200"></canvas>
+    </div>
+    <div class="chart-controls">
+      <button class="btn btn-outline" onclick="showChart('total')">Total</button>
+      <button class="btn btn-outline" onclick="showChart('bench')">Bench</button>
+      <button class="btn btn-outline" onclick="showChart('squat')">Squat</button>
+      <button class="btn btn-outline" onclick="showChart('deadlift')">Deadlift</button>
+    </div>
+  </section>
+
+  <!-- Workout Log Section -->
+  <section class="workout-log">
+    <div class="section-header">
+      <h2>Recent Workouts</h2>
+      <p>Log and track your training sessions</p>
+    </div>
+    <div class="workout-form">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="workoutDate">Date</label>
+          <input type="date" id="workoutDate" required>
+        </div>
+        <div class="form-group">
+          <label for="workoutType">Workout Type</label>
+          <select id="workoutType" required>
+            <option value="">Select type</option>
+            <option value="bench">Bench Press</option>
+            <option value="squat">Squat</option>
+            <option value="deadlift">Deadlift</option>
+            <option value="accessory">Accessory</option>
+            <option value="cardio">Cardio</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="workoutDuration">Duration (min)</label>
+          <input type="number" id="workoutDuration" min="15" max="300" placeholder="45">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="workoutNotes">Notes</label>
+          <textarea id="workoutNotes" placeholder="How did you feel? Any issues?"></textarea>
+        </div>
+      </div>
+      <button class="btn btn-primary" onclick="logWorkout()">Log Workout</button>
+    </div>
+    
+    <div class="workout-history">
+      <h3>Workout History</h3>
+      <div id="workoutList" class="workout-list">
+        <!-- Workouts will be populated here -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Goals Section -->
+  <section class="goals-section">
+    <div class="section-header">
+      <h2>Set Your Goals</h2>
+      <p>Define targets and track your progress towards them</p>
+    </div>
+    <div class="goals-grid">
+      <div class="goal-card">
+        <h3>Short Term (3 months)</h3>
+        <div class="goal-form">
+          <label for="shortTermGoal">Goal</label>
+          <input type="text" id="shortTermGoal" placeholder="e.g., Increase bench by 20 lbs">
+          <label for="shortTermTarget">Target Date</label>
+          <input type="date" id="shortTermTarget">
+          <button class="btn btn-outline" onclick="setGoal('short')">Set Goal</button>
+        </div>
+      </div>
+      
+      <div class="goal-card">
+        <h3>Long Term (1 year)</h3>
+        <div class="goal-form">
+          <label for="longTermGoal">Goal</label>
+          <input type="text" id="longTermGoal" placeholder="e.g., Compete in first meet">
+          <label for="longTermTarget">Target Date</label>
+          <input type="date" id="longTermTarget">
+          <button class="btn btn-outline" onclick="setGoal('long')">Set Goal</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Powerlifting Hub</h3>
+        <p>Professional strength training solutions for athletes at every level.</p>
+      </div>
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="workout.html">Workouts</a></li>
+          <li><a href="nutrition.html">Nutrition</a></li>
+          <li><a href="program.html">Programs</a></li>
+          <li><a href="coaching.html">Coaching</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="progress.html">Progress Tracker</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Powerlifting Hub. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Progress Tracker Functions
+window.progressData = {
+  prs: {
+    bench: { weight: 0, date: null },
+    squat: { weight: 0, date: null },
+    deadlift: { weight: 0, date: null }
+  },
+  workouts: [],
+  goals: {
+    short: { text: '', target: null },
+    long: { text: '', target: null }
+  }
+};
+
+// Load saved data
+function loadProgressData() {
+  try {
+    const saved = localStorage.getItem('powerliftingProgress');
+    if (saved) {
+      window.progressData = { ...window.progressData, ...JSON.parse(saved) };
+      updateDisplay();
+    }
+  } catch (e) {
+    console.warn('Could not load progress data:', e);
+  }
+}
+
+// Save data
+function saveProgressData() {
+  try {
+    localStorage.setItem('powerliftingProgress', JSON.stringify(window.progressData));
+  } catch (e) {
+    console.warn('Could not save progress data:', e);
+  }
+}
+
+// Update PR
+window.updatePR = function(lift) {
+  const weightInput = document.getElementById(`${lift}Weight`);
+  const dateInput = document.getElementById(`${lift}Date`);
+  
+  const weight = parseInt(weightInput.value);
+  const date = dateInput.value;
+  
+  if (!weight || !date) {
+    alert('Please enter both weight and date');
+    return;
+  }
+  
+  if (weight > window.progressData.prs[lift].weight) {
+    window.progressData.prs[lift] = { weight, date };
+    saveProgressData();
+    updateDisplay();
+    
+    // Clear inputs
+    weightInput.value = '';
+    dateInput.value = '';
+    
+    // Show success message
+    showNotification(`New ${lift} PR: ${weight} lbs!`, 'success');
+  } else {
+    alert('This weight is not higher than your current PR');
+  }
+};
+
+// Log workout
+window.logWorkout = function() {
+  const date = document.getElementById('workoutDate').value;
+  const type = document.getElementById('workoutType').value;
+  const duration = document.getElementById('workoutDuration').value;
+  const notes = document.getElementById('workoutNotes').value;
+  
+  if (!date || !type) {
+    alert('Please enter date and workout type');
+    return;
+  }
+  
+  const workout = {
+    id: Date.now(),
+    date,
+    type,
+    duration: duration || null,
+    notes: notes || ''
+  };
+  
+  window.progressData.workouts.unshift(workout);
+  saveProgressData();
+  updateDisplay();
+  
+  // Clear form
+  document.getElementById('workoutDate').value = '';
+  document.getElementById('workoutType').value = '';
+  document.getElementById('workoutDuration').value = '';
+  document.getElementById('workoutNotes').value = '';
+  
+  showNotification('Workout logged successfully!', 'success');
+};
+
+// Set goal
+window.setGoal = function(period) {
+  const goalText = document.getElementById(`${period}TermGoal`).value;
+  const targetDate = document.getElementById(`${period}TermTarget`).value;
+  
+  if (!goalText || !targetDate) {
+    alert('Please enter both goal and target date');
+    return;
+  }
+  
+  window.progressData.goals[period] = { text: goalText, target: targetDate };
+  saveProgressData();
+  updateDisplay();
+  
+  // Clear inputs
+  document.getElementById(`${period}TermGoal`).value = '';
+  document.getElementById(`${period}TermTarget`).value = '';
+  
+  showNotification(`${period === 'short' ? 'Short' : 'Long'} term goal set!`, 'success');
+};
+
+// Update display
+function updateDisplay() {
+  // Update PRs
+  Object.keys(window.progressData.prs).forEach(lift => {
+    const prElement = document.getElementById(`${lift}Pr`);
+    if (prElement) {
+      prElement.textContent = `${window.progressData.prs[lift].weight} lbs`;
+    }
+  });
+  
+  // Update stats
+  const total = Object.values(window.progressData.prs).reduce((sum, pr) => sum + pr.weight, 0);
+  document.getElementById('totalLbs').textContent = total;
+  
+  // Update workout list
+  updateWorkoutList();
+  
+  // Update goals
+  updateGoals();
+}
+
+// Update workout list
+function updateWorkoutList() {
+  const workoutList = document.getElementById('workoutList');
+  if (!workoutList) return;
+  
+  const recentWorkouts = window.progressData.workouts.slice(0, 10);
+  
+  workoutList.innerHTML = recentWorkouts.length > 0 ? 
+    recentWorkouts.map(workout => `
+      <div class="workout-item">
+        <div class="workout-date">${new Date(workout.date).toLocaleDateString()}</div>
+        <div class="workout-type">${workout.type}</div>
+        <div class="workout-duration">${workout.duration ? workout.duration + ' min' : ''}</div>
+        <div class="workout-notes">${workout.notes}</div>
+      </div>
+    `).join('') :
+    '<p class="no-workouts">No workouts logged yet. Start tracking your progress!</p>';
+}
+
+// Update goals
+function updateGoals() {
+  // This would update the goals display
+  // Implementation depends on how you want to show goals
+}
+
+// Show chart
+window.showChart = function(type) {
+  if(!window.__progressChart){
+    const ctx = document.getElementById('progressChart');
+    if(!ctx) return;
+    window.__progressChart = new Chart(ctx, {
+      type: 'line',
+      data: { labels: [], datasets: [] },
+      options: {
+        responsive: true,
+        scales: { y: { beginAtZero: true } }
+      }
+    });
+  }
+
+  const chart = window.__progressChart;
+  const prs = window.progressData.prs;
+  const labels = ['Bench','Squat','Deadlift','Total'];
+  const values = [prs.bench.weight, prs.squat.weight, prs.deadlift.weight, prs.bench.weight+prs.squat.weight+prs.deadlift.weight];
+
+  let dataset;
+  if(type==='bench') dataset = { label:'Bench PR', data: [prs.bench.weight], borderColor:'#6ee7ff' };
+  else if(type==='squat') dataset = { label:'Squat PR', data: [prs.squat.weight], borderColor:'#a78bfa' };
+  else if(type==='deadlift') dataset = { label:'Deadlift PR', data: [prs.deadlift.weight], borderColor:'#f59e0b' };
+  else dataset = { label:'Total', data: [values[3]], borderColor:'#10b981' };
+
+  if(type==='total'){
+    chart.data.labels = ['Total'];
+    chart.data.datasets = [dataset];
+  } else {
+    chart.data.labels = [dataset.label];
+    chart.data.datasets = [dataset];
+  }
+  chart.update();
+};
+
+// Show notification
+function showNotification(message, type = 'info') {
+  const notification = document.createElement('div');
+  notification.className = `notification notification-${type}`;
+  notification.textContent = message;
+  notification.style.cssText = `
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 16px 24px;
+    border-radius: 8px;
+    color: white;
+    font-weight: 600;
+    z-index: 1000;
+    animation: slideIn 0.3s ease;
+  `;
+  
+  if (type === 'success') {
+    notification.style.background = '#10b981';
+  } else if (type === 'error') {
+    notification.style.background = '#ef4444';
+  } else {
+    notification.style.background = '#3b82f6';
+  }
+  
+  document.body.appendChild(notification);
+  
+  setTimeout(() => {
+    notification.remove();
+  }, 3000);
+}
+
+// Initialize progress tracker
+document.addEventListener('DOMContentLoaded', function() {
+  loadProgressData();
+  
+  // Set today's date as default for workout logging
+  const today = new Date().toISOString().split('T')[0];
+  document.getElementById('workoutDate').value = today;
+  
+  // Set default dates for goals (3 months and 1 year from today)
+  const threeMonths = new Date();
+  threeMonths.setMonth(threeMonths.getMonth() + 3);
+  document.getElementById('shortTermTarget').value = threeMonths.toISOString().split('T')[0];
+  
+  const oneYear = new Date();
+  oneYear.setFullYear(oneYear.getFullYear() + 1);
+  document.getElementById('longTermTarget').value = oneYear.toISOString().split('T')[0];
+
+  // Initialize chart with total by default
+  showChart('total');
+});
+</script>
+
+</body>
+</html>

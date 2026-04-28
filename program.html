@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Powerlifting Hub — Full Programs</title>
+  <meta name="description" content="Beginner to advanced powerlifting programs with structured progressions and week 1 preview."/>
+  <link rel="stylesheet" href="base.css"/>
+  <link rel="stylesheet" href="program.css"/>
+  <script defer src="script.js"></script>
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="container">
+    <div class="brand">Powerlifting Hub</div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="workout.html">Workouts</a>
+      <a href="nutrition.html">Nutrition</a>
+      <a href="program.html" class="active">Programs</a>
+      <a href="coaching.html">Coaching</a>
+      <a href="progress.html">Progress</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="container section hero">
+  <h1>Powerlifting Program</h1>
+  <p>Structured cycles for steady PRs. Preview Week 1 instantly.</p>
+</header>
+
+<main class="container section">
+  <div class="grid grid-3">
+    <!-- Beginner Program Card -->
+    <div class="card" data-level="beginner">
+      <img src="squad.jpg" alt="Beginner Powerlifting Program">
+      <div class="card-content">
+        <h3>Beginner 8-Week</h3>
+        <p>3 days/week • Linear progression • Perfect fundamentals</p>
+        <ul class="mt-2">
+          <li>Weeks 1–4: 3×5 main lifts + accessories</li>
+          <li>Weeks 5–8: 5×5 progression + technique focus</li>
+          <li>Estimated time: 60–75 min/session</li>
+        </ul>
+        <div class="mt-2">
+          <a class="btn" href="#preview" onclick="viewProgram('beginner')">Preview Week 1</a>
+          <a class="btn outline" href="contact.html?plan=program-beginner">Get this Program</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Intermediate Program Card -->
+    <div class="card" data-level="intermediate">
+      <img src="bench.jpeg" alt="Intermediate Strength Cycle">
+      <div class="card-content">
+        <h3>Intermediate Strength Cycle</h3>
+        <p>4 days/week • Volume → Intensity • Break plateaus</p>
+        <ul class="mt-2">
+          <li>Phase 1 (4 weeks): Volume & hypertrophy emphasis</li>
+          <li>Phase 2 (4 weeks): Intensity & peaking</li>
+          <li>RPE-based progressions, accessories for weak points</li>
+        </ul>
+        <div class="mt-2">
+          <a class="btn" href="#preview" onclick="viewProgram('intermediate')">Preview Week 1</a>
+          <a class="btn outline" href="contact.html?plan=program-intermediate">Get this Program</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Advanced Program Card -->
+    <div class="card" data-level="advanced">
+      <img src="dead.jpeg" alt="Advanced Peaking Program">
+      <div class="card-content">
+        <h3>Advanced Peak (Meet Prep)</h3>
+        <p>4–5 days/week • Heavy singles • Competition ready</p>
+        <ul class="mt-2">
+          <li>Block periodization with strategic deloads</li>
+          <li>Singles at RPE 8–9, back-off volume for fatigue management</li>
+          <li>Includes attempt selection framework</li>
+        </ul>
+        <div class="mt-2">
+          <a class="btn" href="#preview" onclick="viewProgram('advanced')">Preview Week 1</a>
+          <a class="btn outline" href="contact.html?plan=program-advanced">Get this Program</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- Program Preview Modal -->
+<div id="programModal" class="modal-backdrop">
+  <div class="modal">
+    <header>
+      <div class="modal-title">Program Week 1</div>
+      <button class="close" onclick="Modal.close('programModal')">×</button>
+    </header>
+    <div class="content"></div>
+  </div>
+</div>
+
+<footer><div class="container center">© 2025 Powerlifting Hub</div></footer>
+
+<script>
+// Filter Programs by level
+function filterPrograms(level){
+  document.querySelectorAll('.pill').forEach(p=>p.classList.remove('active'));
+  document.querySelector(`[data-filter="${level}"]`)?.classList.add('active');
+  document.querySelectorAll('[data-level]').forEach(card=>{
+    const show = level==='all' || card.getAttribute('data-level')===level;
+    card.classList.toggle('hide', !show);
+  });
+}
+
+// Week 1 Templates
+const weekHTML = {
+  beginner: `
+    <div class="grid grid-2">
+      <div class="card"><div class="card-content">
+        <h3>Day 1 — Squat Focus</h3>
+        <ul class="mt-2">
+          <li>Back Squat 3×5 @ RPE 7</li>
+          <li>Bench Press 3×5 @ RPE 7</li>
+          <li>DB Row 3×10</li>
+          <li>Plank 3×45s</li>
+        </ul>
+      </div></div>
+      <div class="card"><div class="card-content">
+        <h3>Day 2 — Deadlift Focus</h3>
+        <ul class="mt-2">
+          <li>Deadlift 3×5 @ RPE 7</li>
+          <li>Overhead Press 3×5</li>
+          <li>Lat Pulldown 3×10</li>
+          <li>Back Extension 3×12</li>
+        </ul>
+      </div></div>
+      <div class="card"><div class="card-content">
+        <h3>Day 3 — Bench Focus</h3>
+        <ul class="mt-2">
+          <li>Bench Press 5×5 @ RPE 7</li>
+          <li>Front Squat 3×5</li>
+          <li>DB Incline 3×10</li>
+          <li>Face Pull 3×15</li>
+        </ul>
+      </div></div>
+    </div>
+  `,
+  intermediate: `
+    <div class="grid grid-2">
+      <div class="card"><div class="card-content">
+        <h3>Day 1 — Volume Squat</h3>
+        <ul class="mt-2">
+          <li>Back Squat 5×5 @ 70–75%</li>
+          <li>Comp Bench 5×5 @ 70–75%</li>
+          <li>RDL 3×8 • Split Squat 3×10</li>
+        </ul>
+      </div></div>
+      <div class="card"><div class="card-content">
+        <h3>Day 2 — Bench Volume</h3>
+        <ul class="mt-2">
+          <li>Touch-n-Go Bench 4×8</li>
+          <li>Paused Squat 3×5 @ RPE 7</li>
+          <li>Row 4×10 • Triceps 3×12</li>
+        </ul>
+      </div></div>
+      <div class="card"><div class="card-content">
+        <h3>Day 3 — Deadlift Volume</h3>
+        <ul class="mt-2">
+          <li>Deadlift 5×3 @ 75–80%</li>
+          <li>OHP 4×6</li>
+          <li>Ham Curl 3×12 • Core 3×15</li>
+        </ul>
+      </div></div>
+      <div class="card"><div class="card-content">
+        <h3>Day 4 — Bench Intensity</h3>
+        <ul class="mt-2">
+          <li>Comp Bench 3×3 @ 80–85%</li>
+          <li>Close-Grip 3×6</li>
+          <li>Pull-ups 3×AMRAP • Rear Delt 3×15</li>
+        </ul>
+      </div></div>
+    </div>
+  `,
+  advanced: `
+    <div class="grid grid-2">
+      <div class="card"><div class="card-content">
+        <h3>Day 1 — Squat Singles</h3>
+        <ul class="mt-2">
+          <li>Back Squat — single @ RPE 8, then 3×3 @ -12%</li>
+          <li>Comp Bench 4×4 @ RPE 7</li>
+          <li>Accessory: Leg Press 3×10</li>
+        </ul>
+      </div></div>
+      <div class="card"><div class="card-content">
+        <h3>Day 2 — Deadlift Singles</h3>
+        <ul class="mt-2">
+          <li>Deadlift — single @ RPE 8, then 4×2 @ -10%</li>
+          <li>OHP 4×5</li>
+          <li>Rows 4×8 • Hamstrings 3×12</li>
+        </ul>
+      </div></div>
+      <div class="card"><div class="card-content">
+        <h3>Day 3 — Bench Heavy</h3>
+        <ul class="mt-2">
+          <li>Comp Bench — single @ RPE 8, then 5×2 @ -10%</li>
+          <li>Paused Squat 3×3</li>
+          <li>Pull-down 4×10 • Cuff Work 3×15</li>
+        </ul>
+      </div></div>
+      <div class="card"><div class="card-content">
+        <h3>Day 4 — Secondary Lower</h3>
+        <ul class="mt-2">
+          <li>Front Squat 4×4 @ RPE 7</li>
+          <li>RDL 3×6</li>
+          <li>Core 3×15 • Calves 3×15</li>
+        </ul>
+      </div></div>
+    </div>
+  `
+};
+
+function viewProgram(level){
+  const titles = { beginner: 'Beginner — Week 1', intermediate: 'Intermediate — Week 1', advanced: 'Advanced — Week 1' };
+  Modal.open('programModal', titles[level]||'Program Week 1', weekHTML[level]||'');
+}
+</script>
+
+</body>
+</html>
+
+

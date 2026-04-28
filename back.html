@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Powerlifting Hub — Back Workouts</title>
+  <meta name="description" content="Back workouts: deadlifts, rows, pulldowns and more for a strong posterior chain."/>
+  <link rel="stylesheet" href="base.css"/>
+  <link rel="stylesheet" href="muscle-groups.css"/>
+  <script defer src="script.js"></script>
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="container">
+    <div class="brand">Powerlifting Hub</div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="workout.html">Workouts</a>
+      <a href="nutrition.html">Nutrition</a>
+      <a href="program.html">Programs</a>
+      <a href="coaching.html">Coaching</a>
+      <a href="progress.html">Progress</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="container section">
+  <div class="hero">
+    <h1>Back Workouts</h1>
+    <p>Build a strong, thick back with these powerlifting-focused exercises.</p>
+  </div>
+</header>
+
+<main class="container section">
+  <div class="grid grid-3">
+    <div class="card" onclick="Modal.open('workoutModal','Conventional Deadlift', `
+      <p><b>Sets/Reps:</b> 3–5×3–5 heavy</p>
+      <p>Hinge pattern: bar over midfoot, lats tight, push floor away, keep bar close.</p>`)">
+      <img src="https://images.unsplash.com/photo-1571731956672-6b5bcb12c886?auto=format&fit=crop&w=1200&q=60" alt="Deadlift">
+      <div class="card-content">
+        <h3>Conventional Deadlift <span class="badge">Primary</span></h3>
+        <p>Maximizes posterior-chain strength.</p>
+      </div>
+    </div>
+
+    <div class="card" onclick="Modal.open('workoutModal','Barbell Row', `
+      <p><b>Sets/Reps:</b> 4×6–10</p>
+      <p>Hinge ~45°, pull to lower ribs, brace core.</p>`)">
+      <img src="https://images.unsplash.com/photo-1598970434795-0c54fe7c0642?auto=format&fit=crop&w=1200&q=60" alt="Row">
+      <div class="card-content">
+        <h3>Barbell Row <span class="badge">Primary</span></h3>
+        <p>Back thickness & lat strength.</p>
+      </div>
+    </div>
+
+    <div class="card" onclick="Modal.open('workoutModal','Pull-Ups', `
+      <p><b>Sets/Reps:</b> 3×Max reps</p>
+      <p>Full range of motion, controlled descent, engage lats.</p>`)">
+      <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=1200&q=60" alt="Pull Ups">
+      <div class="card-content">
+        <h3>Pull-Ups <span class="badge">Bodyweight</span></h3>
+        <p>Upper back and lat development.</p>
+      </div>
+    </div>
+
+    <div class="card" onclick="Modal.open('workoutModal','Lat Pulldown', `
+      <p><b>Sets/Reps:</b> 3×8–12</p>
+      <p>Pull to upper chest, squeeze shoulder blades together.</p>`)">
+      <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=1200&q=60" alt="Lat Pulldown">
+      <div class="card-content">
+        <h3>Lat Pulldown <span class="badge">Accessory</span></h3>
+        <p>Great lat isolation exercise.</p>
+      </div>
+    </div>
+
+    <div class="card" onclick="Modal.open('workoutModal','Face Pulls', `
+      <p><b>Sets/Reps:</b> 3×12–15</p>
+      <p>Pull to forehead, external rotation, retract scapula.</p>`)">
+      <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=1200&q=60" alt="Face Pulls">
+      <div class="card-content">
+        <h3>Face Pulls <span class="badge">Rehab</span></h3>
+        <p>Shoulder health and upper back activation.</p>
+      </div>
+    </div>
+
+    <div class="card" onclick="Modal.open('workoutModal','Good Mornings', `
+      <p><b>Sets/Reps:</b> 3×8–12</p>
+      <p>Hinge at hips, keep bar close, maintain neutral spine.</p>`)">
+      <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=1200&q=60" alt="Good Mornings">
+      <div class="card-content">
+        <h3>Good Mornings <span class="badge">Accessory</span></h3>
+        <p>Posterior chain and lower back strength.</p>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- Modal -->
+<div class="modal-backdrop" id="workoutModal">
+  <div class="modal">
+    <header>
+      <div class="modal-title">Title</div>
+      <button class="close" onclick="Modal.close('workoutModal')">×</button>
+    </header>
+    <div class="content">…</div>
+  </div>
+</div>
+
+<footer><div class="container center">© 2025 Powerlifting Hub</div></footer>
+</body>
+</html> 

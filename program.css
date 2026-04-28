@@ -1,0 +1,269 @@
+/* ---------- Program Page Specific Styles ---------- */
+
+/* Program Cards */
+.program-card {
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.program-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--brand), var(--brand-2));
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+  z-index: 2;
+}
+
+.program-card:hover::before {
+  transform: scaleX(1);
+}
+
+.program-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.program-card img {
+  transition: transform 0.3s ease;
+}
+
+.program-card:hover img {
+  transform: scale(1.05);
+}
+
+/* Program Features */
+.program-features {
+  margin: 16px 0;
+}
+
+.program-features ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.program-features li {
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.program-features li:last-child {
+  border-bottom: none;
+}
+
+.program-features li::before {
+  content: '✓';
+  color: var(--brand);
+  font-weight: bold;
+  margin-right: 8px;
+}
+
+/* Program Level Badges */
+.program-level {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 12px;
+}
+
+.program-level.beginner {
+  background: rgba(34, 197, 94, 0.1);
+  color: #22c55e;
+  border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+.program-level.intermediate {
+  background: rgba(59, 130, 246, 0.1);
+  color: #3b82f6;
+  border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+.program-level.advanced {
+  background: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+/* Program Duration */
+.program-duration {
+  color: var(--brand);
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+}
+
+/* Program Description */
+.program-description {
+  color: var(--muted);
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+/* Program Actions */
+.program-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.program-actions .btn {
+  margin: 0;
+  flex: 1;
+  min-width: 120px;
+  text-align: center;
+}
+
+/* Modal Enhancements */
+.modal-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.modal .content {
+  line-height: 1.6;
+}
+
+.modal .content h3 {
+  color: var(--brand);
+  margin: 20px 0 12px 0;
+  font-size: 1.2rem;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--line);
+}
+
+.modal .content h4 {
+  color: var(--ink);
+  margin: 16px 0 8px 0;
+  font-size: 1.1rem;
+}
+
+.modal .content ul {
+  margin: 12px 0;
+  padding-left: 20px;
+}
+
+.modal .content li {
+  margin-bottom: 8px;
+  color: var(--muted);
+}
+
+.modal .content strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+/* Exercise Lists */
+.exercise-list {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 16px;
+  margin: 12px 0;
+}
+
+.exercise-list h4 {
+  color: var(--brand);
+  margin-bottom: 12px;
+  font-size: 1rem;
+}
+
+.exercise-list ul {
+  margin: 0;
+  padding-left: 16px;
+}
+
+.exercise-list li {
+  color: var(--muted);
+  margin-bottom: 6px;
+  font-size: 0.9rem;
+}
+
+/* RPE Indicators */
+.rpe-indicator {
+  display: inline-block;
+  background: rgba(110, 231, 255, 0.1);
+  color: var(--brand);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-left: 4px;
+}
+
+/* Program Stats */
+.program-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 16px;
+  margin: 16px 0;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 12px;
+  border: 1px solid var(--line);
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.stat-item .number {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--brand);
+  display: block;
+}
+
+.stat-item .label {
+  font-size: 0.8rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .program-actions {
+    flex-direction: column;
+  }
+  
+  .program-actions .btn {
+    width: 100%;
+  }
+  
+  .program-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .modal .content {
+    padding: 16px;
+  }
+  
+  .exercise-list {
+    padding: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .program-stats {
+    grid-template-columns: 1fr;
+  }
+  
+  .stat-item {
+    padding: 8px;
+  }
+}

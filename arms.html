@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Powerlifting Hub — Arms Workouts</title>
+  <meta name="description" content="Arms workouts for powerlifters: curls, pushdowns, skull crushers, and more with form tips."/>
+  <link rel="stylesheet" href="base.css"/>
+  <link rel="stylesheet" href="muscle-groups.css"/>
+  <script defer src="script.js"></script>
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="container">
+    <div class="brand">Powerlifting Hub</div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="workout.html">Workouts</a>
+      <a href="nutrition.html">Nutrition</a>
+      <a href="program.html">Programs</a>
+      <a href="coaching.html">Coaching</a>
+      <a href="progress.html">Progress</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="container section">
+  <div class="hero">
+    <h1>Arms Workouts</h1>
+    <p>Build strong arms to support your powerlifting movements.</p>
+  </div>
+</header>
+
+<main class="container section">
+  <div class="grid grid-3">
+    <div class="card" onclick="Modal.open('workoutModal','EZ-Bar Curl', `
+      <p><b>Sets/Reps:</b> 3×10–12</p>
+      <p>Elbows fixed, slow eccentric, avoid swinging.</p>`)">
+      <img src="bicep curl.jpg" alt="Curl">
+      <div class="card-content">
+        <h3>EZ-Bar Curl <span class="badge">Biceps</span></h3>
+        <p>Arm flexion strength & size.</p>
+      </div>
+    </div>
+
+    <div class="card" onclick="Modal.open('workoutModal','Cable Pushdown', `
+      <p><b>Sets/Reps:</b> 3–4×10–15</p>
+      <p>Shoulders down/back; full lockout without flaring.</p>`)">
+      <img src="https://images.unsplash.com/photo-1579758629938-03607ccdbaba?auto=format&fit=crop&w=1200&q=60" alt="Pushdown">
+      <div class="card-content">
+        <h3>Cable Pushdown <span class="badge">Triceps</span></h3>
+        <p>Triceps isolation to boost pressing.</p>
+      </div>
+    </div>
+
+    <div class="card" onclick="Modal.open('workoutModal','Hammer Curls', `
+      <p><b>Sets/Reps:</b> 3×10–12 each arm</p>
+      <p>Neutral grip, controlled movement, alternate arms.</p>`)">
+      <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=1200&q=60" alt="Hammer Curls">
+      <div class="card-content">
+        <h3>Hammer Curls <span class="badge">Biceps</span></h3>
+        <p>Forearm and bicep development.</p>
+      </div>
+    </div>
+
+    <div class="card" onclick="Modal.open('workoutModal','Diamond Push-Ups', `
+      <p><b>Sets/Reps:</b> 3×Max reps</p>
+      <p>Hands form diamond shape, focus on triceps.</p>`)">
+      <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=1200&q=60" alt="Diamond Push Ups">
+      <div class="card-content">
+        <h3>Diamond Push-Ups <span class="badge">Triceps</span></h3>
+        <p>Bodyweight triceps builder.</p>
+      </div>
+    </div>
+
+    <div class="card" onclick="Modal.open('workoutModal','Preacher Curls', `
+      <p><b>Sets/Reps:</b> 3×8–12</p>
+      <p>Full range of motion, controlled movement.</p>`)">
+      <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=1200&q=60" alt="Preacher Curls">
+      <div class="card-content">
+        <h3>Preacher Curls <span class="badge">Biceps</span></h3>
+        <p>Strict form bicep isolation.</p>
+      </div>
+    </div>
+
+    <div class="card" onclick="Modal.open('workoutModal','Skull Crushers', `
+      <p><b>Sets/Reps:</b> 3×8–12</p>
+      <p>Lower bar behind head, extend elbows fully.</p>`)">
+      <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=1200&q=60" alt="Skull Crushers">
+      <div class="card-content">
+        <h3>Skull Crushers <span class="badge">Triceps</span></h3>
+        <p>Lying triceps extension.</p>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- Modal -->
+<div class="modal-backdrop" id="workoutModal">
+  <div class="modal">
+    <header>
+      <div class="modal-title">Title</div>
+      <button class="close" onclick="Modal.close('workoutModal')">×</button>
+    </header>
+    <div class="content">…</div>
+  </div>
+</div>
+
+<footer><div class="container center">© 2025 Powerlifting Hub</div></footer>
+</body>
+</html> 

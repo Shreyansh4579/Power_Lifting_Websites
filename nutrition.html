@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Powerlifting Hub — Nutrition</title>
+  <meta name="description" content="Nutrition database, macros, and daily targets to fuel powerlifting progress."/>
+  <link rel="stylesheet" href="base.css"/>
+  <link rel="stylesheet" href="nutrition.css"/>
+  <script defer src="script.js"></script>
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="container">
+    <div class="brand">Powerlifting Hub</div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="workout.html">Workouts</a>
+      <a href="nutrition.html">Nutrition</a>
+      <a href="program.html">Programs</a>
+      <a href="coaching.html">Coaching</a>
+      <a href="progress.html">Progress</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="container section">
+  <div class="hero">
+    <h1>Nutrition that powers PRs</h1>
+    <p>Search for any food to get detailed nutritional information. Use the database below or search for specific foods.</p>
+    <div id="calorieNotice" class="mt-2"></div>
+    <div class="search-container">
+      <input id="foodSearch" oninput="searchFoods(this.value)" placeholder="Search any food... e.g. chicken, rice, apple, salmon"
+        style="margin-top:14px;padding:12px 14px;width:min(520px,90%);border-radius:12px;border:1px solid rgba(255,255,255,.12);background:#0a1022;color:var(--ink)"/>
+      <div id="searchResults" class="search-results"></div>
+    </div>
+  </div>
+</header>
+
+<main class="container section">
+  <div class="food-categories">
+    <button class="category-btn active" onclick="filterByCategory('all')">All Foods</button>
+    <button class="category-btn" onclick="filterByCategory('protein')">Protein</button>
+    <button class="category-btn" onclick="filterByCategory('carbs')">Carbs</button>
+    <button class="category-btn" onclick="filterByCategory('fats')">Fats</button>
+    <button class="category-btn" onclick="filterByCategory('vegetables')">Vegetables</button>
+    <button class="category-btn" onclick="filterByCategory('fruits')">Fruits</button>
+    <button class="category-btn" onclick="filterByCategory('dairy')">Dairy</button>
+  </div>
+
+  <div class="table-wrap">
+    <table id="foods">
+      <thead>
+        <tr>
+          <th class="sortable" onclick="sortTableBy(0)">Food</th>
+          <th>Portion</th>
+          <th class="sortable" onclick="sortTableBy(2)">Protein (g)</th>
+          <th class="sortable" onclick="sortTableBy(3)">Carbs (g)</th>
+          <th class="sortable" onclick="sortTableBy(4)">Fat (g)</th>
+          <th class="sortable" onclick="sortTableBy(5)">Calories</th>
+          <th>Category</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- PROTEIN SOURCES -->
+        <tr data-category="protein"><td>Chicken Breast (cooked)</td><td>100 g</td><td data-num="31">31</td><td data-num="0">0</td><td data-num="3.6">3.6</td><td data-num="165">165</td><td>Protein</td></tr>
+        <tr data-category="protein"><td>Egg (whole)</td><td>1 large</td><td data-num="6">6</td><td data-num="0.6">0.6</td><td data-num="5">5</td><td data-num="78">78</td><td>Protein</td></tr>
+        <tr data-category="protein"><td>Paneer / Cottage Cheese</td><td>100 g</td><td data-num="18">18</td><td data-num="3">3</td><td data-num="20">20</td><td data-num="265">265</td><td>Protein</td></tr>
+        <tr data-category="protein"><td>Tofu (firm)</td><td>100 g</td><td data-num="8">8</td><td data-num="2">2</td><td data-num="4">4</td><td data-num="76">76</td><td>Protein</td></tr>
+        <tr data-category="protein"><td>Whey Protein</td><td>1 scoop (30 g)</td><td data-num="24">24</td><td data-num="3">3</td><td data-num="2">2</td><td data-num="120">120</td><td>Protein</td></tr>
+        <tr data-category="protein"><td>Greek Yogurt (plain)</td><td>170 g (1 cup)</td><td data-num="17">17</td><td data-num="6">6</td><td data-num="0">0</td><td data-num="100">100</td><td>Protein</td></tr>
+        <tr data-category="protein"><td>Salmon (cooked)</td><td>100 g</td><td data-num="22">22</td><td data-num="0">0</td><td data-num="12">12</td><td data-num="208">208</td><td>Protein</td></tr>
+        <tr data-category="protein"><td>Tuna (canned, water)</td><td>100 g</td><td data-num="23">23</td><td data-num="0">0</td><td data-num="1">1</td><td data-num="132">132</td><td>Protein</td></tr>
+        <tr data-category="protein"><td>Egg Whites</td><td>100 g</td><td data-num="11">11</td><td data-num="0.7">0.7</td><td data-num="0.2">0.2</td><td data-num="52">52</td><td>Protein</td></tr>
+        <tr data-category="protein"><td>Lean Beef (cooked)</td><td>100 g</td><td data-num="26">26</td><td data-num="0">0</td><td data-num="8">8</td><td data-num="180">180</td><td>Protein</td></tr>
+        <tr data-category="protein"><td>Turkey Breast (cooked)</td><td>100 g</td><td data-num="29">29</td><td data-num="0">0</td><td data-num="3">3</td><td data-num="145">145</td><td>Protein</td></tr>
+        <tr data-category="protein"><td>Pork Chop (cooked)</td><td>100 g</td><td data-num="25">25</td><td data-num="0">0</td><td data-num="12">12</td><td data-num="200">200</td><td>Protein</td></tr>
+        <tr data-category="protein"><td>Shrimp (cooked)</td><td>100 g</td><td data-num="24">24</td><td data-num="0">0</td><td data-num="1">1</td><td data-num="99">99</td><td>Protein</td></tr>
+        <tr data-category="protein"><td>Cod (cooked)</td><td>100 g</td><td data-num="20">20</td><td data-num="0">0</td><td data-num="0.5">0.5</td><td data-num="82">82</td><td>Protein</td></tr>
+        <tr data-category="protein"><td>Mutton (cooked)</td><td>100 g</td><td data-num="25">25</td><td data-num="0">0</td><td data-num="15">15</td><td data-num="220">220</td><td>Protein</td></tr>
+        <tr data-category="protein"><td>Fish Curry (cooked)</td><td>100 g</td><td data-num="18">18</td><td data-num="5">5</td><td data-num="8">8</td><td data-num="150">150</td><td>Protein</td></tr>
+        <tr data-category="protein"><td>Chicken Curry (cooked)</td><td>100 g</td><td data-num="22">22</td><td data-num="4">4</td><td data-num="12">12</td><td data-num="180">180</td><td>Protein</td></tr>
+        <tr data-category="protein"><td>Dal (cooked)</td><td>100 g</td><td data-num="8">8</td><td data-num="20">20</td><td data-num="0.5">0.5</td><td data-num="116">116</td><td>Protein</td></tr>
+
+        <!-- CARBOHYDRATE SOURCES -->
+        <tr data-category="carbs"><td>Brown Rice (cooked)</td><td>150 g (1 cup)</td><td data-num="3">3</td><td data-num="45">45</td><td data-num="1">1</td><td data-num="216">216</td><td>Carbs</td></tr>
+        <tr data-category="carbs"><td>Oats (dry)</td><td>40 g</td><td data-num="6.8">6.8</td><td data-num="26">26</td><td data-num="3.4">3.4</td><td data-num="156">156</td><td>Carbs</td></tr>
+        <tr data-category="carbs"><td>Quinoa (cooked)</td><td>185 g (1 cup)</td><td data-num="8">8</td><td data-num="39">39</td><td data-num="3.5">3.5</td><td data-num="222">222</td><td>Carbs</td></tr>
+        <tr data-category="carbs"><td>Whole-wheat Bread</td><td>2 slices</td><td data-num="8">8</td><td data-num="24">24</td><td data-num="2">2</td><td data-num="160">160</td><td>Carbs</td></tr>
+        <tr data-category="carbs"><td>Sweet Potato (baked)</td><td>200 g (medium)</td><td data-num="4">4</td><td data-num="41">41</td><td data-num="0.2">0.2</td><td data-num="180">180</td><td>Carbs</td></tr>
+        <tr data-category="carbs"><td>White Rice (cooked)</td><td>150 g (1 cup)</td><td data-num="2.7">2.7</td><td data-num="44">44</td><td data-num="0.3">0.3</td><td data-num="190">190</td><td>Carbs</td></tr>
+        <tr data-category="carbs"><td>Pasta (cooked)</td><td>100 g</td><td data-num="4">4</td><td data-num="25">25</td><td data-num="1">1</td><td data-num="130">130</td><td>Carbs</td></tr>
+        <tr data-category="carbs"><td>Potato (baked)</td><td>173 g (medium)</td><td data-num="4">4</td><td data-num="37">37</td><td data-num="0.2">0.2</td><td data-num="161">161</td><td>Carbs</td></tr>
+        <tr data-category="carbs"><td>Corn (cooked)</td><td>100 g</td><td data-num="3.2">3.2</td><td data-num="21">21</td><td data-num="1.2">1.2</td><td data-num="96">96</td><td>Carbs</td></tr>
+        <tr data-category="carbs"><td>Roti (whole wheat)</td><td>1 piece (30 g)</td><td data-num="3">3</td><td data-num="15">15</td><td data-num="1">1</td><td data-num="80">80</td><td>Carbs</td></tr>
+        <tr data-category="carbs"><td>Naan (plain)</td><td>1 piece (90 g)</td><td data-num="6">6</td><td data-num="45">45</td><td data-num="3">3</td><td data-num="230">230</td><td>Carbs</td></tr>
+        <tr data-category="carbs"><td>Paratha (aloo)</td><td>1 piece (80 g)</td><td data-num="6">6</td><td data-num="35">35</td><td data-num="8">8</td><td data-num="220">220</td><td>Carbs</td></tr>
+        <tr data-category="carbs"><td>Idli (steamed)</td><td>2 pieces (100 g)</td><td data-num="4">4</td><td data-num="25">25</td><td data-num="1">1</td><td data-num="120">120</td><td>Carbs</td></tr>
+        <tr data-category="carbs"><td>Dosa (plain)</td><td>1 piece (120 g)</td><td data-num="4">4</td><td data-num="30">30</td><td data-num="2">2</td><td data-num="150">150</td><td>Carbs</td></tr>
+        <tr data-category="carbs"><td>Upma (cooked)</td><td>100 g</td><td data-num="4">4</td><td data-num="25">25</td><td data-num="3">3</td><td data-num="140">140</td><td>Carbs</td></tr>
+        <tr data-category="carbs"><td>Poha (cooked)</td><td>100 g</td><td data-num="3">3</td><td data-num="22">22</td><td data-num="2">2</td><td data-num="120">120</td><td>Carbs</td></tr>
+        <tr data-category="carbs"><td>Biryani Rice (cooked)</td><td>100 g</td><td data-num="3">3</td><td data-num="35">35</td><td data-num="8">8</td><td data-num="200">200</td><td>Carbs</td></tr>
+
+        <!-- LEGUMES -->
+        <tr data-category="protein"><td>Lentils (cooked)</td><td>198 g (1 cup)</td><td data-num="18">18</td><td data-num="40">40</td><td data-num="0.8">0.8</td><td data-num="230">230</td><td>Protein</td></tr>
+        <tr data-category="protein"><td>Chickpeas (cooked)</td><td>164 g (1 cup)</td><td data-num="14.5">14.5</td><td data-num="45">45</td><td data-num="4">4</td><td data-num="269">269</td><td>Protein</td></tr>
+        <tr data-category="protein"><td>Kidney Beans (cooked)</td><td>177 g (1 cup)</td><td data-num="15">15</td><td data-num="40">40</td><td data-num="1">1</td><td data-num="225">225</td><td>Protein</td></tr>
+        <tr data-category="protein"><td>Black Beans (cooked)</td><td>172 g (1 cup)</td><td data-num="15">15</td><td data-num="41">41</td><td data-num="0.9">0.9</td><td data-num="227">227</td><td>Protein</td></tr>
+        <tr data-category="protein"><td>Moong Dal (cooked)</td><td>100 g</td><td data-num="7">7</td><td data-num="19">19</td><td data-num="0.4">0.4</td><td data-num="105">105</td><td>Protein</td></tr>
+        <tr data-category="protein"><td>Toor Dal (cooked)</td><td>100 g</td><td data-num="6">6</td><td data-num="18">18</td><td data-num="0.4">0.4</td><td data-num="100">100</td><td>Protein</td></tr>
+        <tr data-category="protein"><td>Urad Dal (cooked)</td><td>100 g</td><td data-num="7">7</td><td data-num="18">18</td><td data-num="0.4">0.4</td><td data-num="105">105</td><td>Protein</td></tr>
+        <tr data-category="protein"><td>Masoor Dal (cooked)</td><td>100 g</td><td data-num="9">9</td><td data-num="20">20</td><td data-num="0.4">0.4</td><td data-num="120">120</td><td>Protein</td></tr>
+
+        <!-- FRUITS -->
+        <tr data-category="fruits"><td>Banana</td><td>118 g (medium)</td><td data-num="1.3">1.3</td><td data-num="27">27</td><td data-num="0.3">0.3</td><td data-num="105">105</td><td>Fruits</td></tr>
+        <tr data-category="fruits"><td>Apple</td><td>182 g (medium)</td><td data-num="0.5">0.5</td><td data-num="25">25</td><td data-num="0.3">0.3</td><td data-num="95">95</td><td>Fruits</td></tr>
+        <tr data-category="fruits"><td>Orange</td><td>131 g (medium)</td><td data-num="1.2">1.2</td><td data-num="15">15</td><td data-num="0.1">0.1</td><td data-num="62">62</td><td>Fruits</td></tr>
+        <tr data-category="fruits"><td>Strawberries</td><td>100 g</td><td data-num="0.7">0.7</td><td data-num="8">8</td><td data-num="0.3">0.3</td><td data-num="32">32</td><td>Fruits</td></tr>
+        <tr data-category="fruits"><td>Blueberries</td><td>100 g</td><td data-num="0.7">0.7</td><td data-num="14">14</td><td data-num="0.3">0.3</td><td data-num="57">57</td><td>Fruits</td></tr>
+        <tr data-category="fruits"><td>Grapes</td><td>100 g</td><td data-num="0.6">0.6</td><td data-num="16">16</td><td data-num="0.2">0.2</td><td data-num="62">62</td><td>Fruits</td></tr>
+        <tr data-category="fruits"><td>Mango (ripe)</td><td>100 g</td><td data-num="0.8">0.8</td><td data-num="25">25</td><td data-num="0.4">0.4</td><td data-num="100">100</td><td>Fruits</td></tr>
+        <tr data-category="fruits"><td>Papaya (ripe)</td><td>100 g</td><td data-num="0.5">0.5</td><td data-num="10">10</td><td data-num="0.1">0.1</td><td data-num="43">43</td><td>Fruits</td></tr>
+        <tr data-category="fruits"><td>Guava (ripe)</td><td>100 g</td><td data-num="2.6">2.6</td><td data-num="14">14</td><td data-num="0.9">0.9</td><td data-num="68">68</td><td>Fruits</td></tr>
+        <tr data-category="fruits"><td>Pomegranate</td><td>100 g</td><td data-num="1.7">1.7</td><td data-num="19">19</td><td data-num="1.2">1.2</td><td data-num="83">83</td><td>Fruits</td></tr>
+        <tr data-category="fruits"><td>Chikoo (Sapodilla)</td><td>100 g</td><td data-num="0.4">0.4</td><td data-num="20">20</td><td data-num="1.1">1.1</td><td data-num="83">83</td><td>Fruits</td></tr>
+        <tr data-category="fruits"><td>Jamun (Black Plum)</td><td>100 g</td><td data-num="0.7">0.7</td><td data-num="15">15</td><td data-num="0.2">0.2</td><td data-num="62">62</td><td>Fruits</td></tr>
+
+        <!-- VEGETABLES -->
+        <tr data-category="vegetables"><td>Broccoli (cooked)</td><td>100 g</td><td data-num="2.8">2.8</td><td data-num="7">7</td><td data-num="0.4">0.4</td><td data-num="35">35</td><td>Vegetables</td></tr>
+        <tr data-category="vegetables"><td>Spinach (cooked)</td><td>100 g</td><td data-num="3">3</td><td data-num="4">4</td><td data-num="0.6">0.6</td><td data-num="23">23</td><td>Vegetables</td></tr>
+        <tr data-category="vegetables"><td>Carrots (raw)</td><td>100 g</td><td data-num="0.9">0.9</td><td data-num="10">10</td><td data-num="0.2">0.2</td><td data-num="41">41</td><td>Vegetables</td></tr>
+        <tr data-category="vegetables"><td>Cauliflower (cooked)</td><td>100 g</td><td data-num="1.8">1.8</td><td data-num="4">4</td><td data-num="0.3">0.3</td><td data-num="25">25</td><td>Vegetables</td></tr>
+        <tr data-category="vegetables"><td>Bell Pepper (raw)</td><td>100 g</td><td data-num="1">1</td><td data-num="6">6</td><td data-num="0.3">0.3</td><td data-num="31">31</td><td>Vegetables</td></tr>
+        <tr data-category="vegetables"><td>Tomato (raw)</td><td>100 g</td><td data-num="0.9">0.9</td><td data-num="3.9">3.9</td><td data-num="0.2">0.2</td><td data-num="18">18</td><td>Vegetables</td></tr>
+        <tr data-category="vegetables"><td>Cucumber (raw)</td><td>100 g</td><td data-num="0.7">0.7</td><td data-num="3.6">3.6</td><td data-num="0.1">0.1</td><td data-num="16">16</td><td>Vegetables</td></tr>
+        <tr data-category="vegetables"><td>Onion (raw)</td><td>100 g</td><td data-num="1.1">1.1</td><td data-num="9">9</td><td data-num="0.1">0.1</td><td data-num="40">40</td><td>Vegetables</td></tr>
+        <tr data-category="vegetables"><td>Potato (raw)</td><td>100 g</td><td data-num="2">2</td><td data-num="17">17</td><td data-num="0.1">0.1</td><td data-num="77">77</td><td>Vegetables</td></tr>
+        <tr data-category="vegetables"><td>Brinjal (Eggplant)</td><td>100 g</td><td data-num="1">1</td><td data-num="6">6</td><td data-num="0.2">0.2</td><td data-num="25">25</td><td>Vegetables</td></tr>
+        <tr data-category="vegetables"><td>Bhindi (Okra)</td><td>100 g</td><td data-num="2">2</td><td data-num="7">7</td><td data-num="0.2">0.2</td><td data-num="33">33</td><td>Vegetables</td></tr>
+        <tr data-category="vegetables"><td>Gobi (Cauliflower)</td><td>100 g</td><td data-num="1.9">1.9</td><td data-num="5">5</td><td data-num="0.3">0.3</td><td data-num="25">25</td><td>Vegetables</td></tr>
+        <tr data-category="vegetables"><td>Aloo (Potato)</td><td>100 g</td><td data-num="2">2</td><td data-num="17">17</td><td data-num="0.1">0.1</td><td data-num="77">77</td><td>Vegetables</td></tr>
+        <tr data-category="vegetables"><td>Pyaaz (Onion)</td><td>100 g</td><td data-num="1.1">1.1</td><td data-num="9">9</td><td data-num="0.1">0.1</td><td data-num="40">40</td><td>Vegetables</td></tr>
+        <tr data-category="vegetables"><td>Tamatar (Tomato)</td><td>100 g</td><td data-num="0.9">0.9</td><td data-num="3.9">3.9</td><td data-num="0.2">0.2</td><td data-num="18">18</td><td>Vegetables</td></tr>
+
+        <!-- DAIRY -->
+        <tr data-category="dairy"><td>Milk (whole)</td><td>240 ml (1 cup)</td><td data-num="8">8</td><td data-num="12">12</td><td data-num="8">8</td><td data-num="150">150</td><td>Dairy</td></tr>
+        <tr data-category="dairy"><td>Milk (skim)</td><td>240 ml (1 cup)</td><td data-num="8">8</td><td data-num="12">12</td><td data-num="0.2">0.2</td><td data-num="83">83</td><td>Dairy</td></tr>
+        <tr data-category="dairy"><td>Cheese (cheddar)</td><td>30 g (1 oz)</td><td data-num="7">7</td><td data-num="0.4">0.4</td><td data-num="9">9</td><td data-num="113">113</td><td>Dairy</td></tr>
+        <tr data-category="dairy"><td>Yogurt (plain)</td><td>170 g (1 cup)</td><td data-num="9">9</td><td data-num="12">12</td><td data-num="5">5</td><td data-num="130">130</td><td>Dairy</td></tr>
+        <tr data-category="dairy"><td>Curd (homemade)</td><td>100 g</td><td data-num="4">4</td><td data-num="3">3</td><td data-num="4">4</td><td data-num="60">60</td><td>Dairy</td></tr>
+        <tr data-category="dairy"><td>Buttermilk</td><td>240 ml (1 cup)</td><td data-num="8">8</td><td data-num="12">12</td><td data-num="8">8</td><td data-num="150">150</td><td>Dairy</td></tr>
+        <tr data-category="dairy"><td>Ghee (clarified butter)</td><td>1 tbsp (14 g)</td><td data-num="0">0</td><td data-num="0">0</td><td data-num="14">14</td><td data-num="120">120</td><td>Dairy</td></tr>
+
+        <!-- FATS -->
+        <tr data-category="fats"><td>Olive Oil</td><td>1 tbsp (14 g)</td><td data-num="0">0</td><td data-num="0">0</td><td data-num="14">14</td><td data-num="119">119</td><td>Fats</td></tr>
+        <tr data-category="fats"><td>Almonds</td><td>28 g (handful)</td><td data-num="6">6</td><td data-num="6">6</td><td data-num="14">14</td><td data-num="164">164</td><td>Fats</td></tr>
+        <tr data-category="fats"><td>Peanuts</td><td>28 g (handful)</td><td data-num="7">7</td><td data-num="6">6</td><td data-num="14">14</td><td data-num="166">166</td><td>Fats</td></tr>
+        <tr data-category="fats"><td>Walnuts</td><td>28 g (handful)</td><td data-num="4">4</td><td data-num="4">4</td><td data-num="18">18</td><td data-num="185">185</td><td>Fats</td></tr>
+        <tr data-category="fats"><td>Avocado</td><td>100 g</td><td data-num="2">2</td><td data-num="9">9</td><td data-num="15">15</td><td data-num="160">160</td><td>Fats</td></tr>
+        <tr data-category="fats"><td>Butter</td><td>1 tbsp (14 g)</td><td data-num="0.1">0.1</td><td data-num="0">0</td><td data-num="11">11</td><td data-num="102">102</td><td>Fats</td></tr>
+        <tr data-category="fats"><td>Coconut Oil</td><td>1 tbsp (14 g)</td><td data-num="0">0</td><td data-num="0">0</td><td data-num="14">14</td><td data-num="120">120</td><td>Fats</td></tr>
+        <tr data-category="fats"><td>Cashews</td><td>28 g (handful)</td><td data-num="5">5</td><td data-num="9">9</td><td data-num="12">12</td><td data-num="157">157</td><td>Fats</td></tr>
+        <tr data-category="fats"><td>Pistachios</td><td>28 g (handful)</td><td data-num="6">6</td><td data-num="8">8</td><td data-num="13">13</td><td data-num="159">159</td><td>Fats</td></tr>
+        <tr data-category="fats"><td>Sunflower Seeds</td><td>28 g (handful)</td><td data-num="6">6</td><td data-num="6">6</td><td data-num="14">14</td><td data-num="164">164</td><td>Fats</td></tr>
+        <tr data-category="fats"><td>Pumpkin Seeds</td><td>28 g (handful)</td><td data-num="7">7</td><td data-num="4">4</td><td data-num="13">13</td><td data-num="151">151</td><td>Fats</td></tr>
+        <tr data-category="fats"><td>Chia Seeds</td><td>28 g (handful)</td><td data-num="5">5</td><td data-num="12">12</td><td data-num="9">9</td><td data-num="138">138</td><td>Fats</td></tr>
+        <tr data-category="fats"><td>Flax Seeds</td><td>28 g (handful)</td><td data-num="5">5</td><td data-num="8">8</td><td data-num="12">12</td><td data-num="150">150</td><td>Fats</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="grid grid-2 mt-3">
+    <div class="card"><div class="card-content">
+      <h3>Daily Targets (rule of thumb)</h3>
+      <ul class="mt-2">
+        <li><b>Protein:</b> 1.6–2.2 g per kg bodyweight</li>
+        <li><b>Fat:</b> 0.6–1.0 g per kg bodyweight</li>
+        <li><b>Carbs:</b> fill remaining calories for energy</li>
+      </ul>
+    </div></div>
+    <div class="card"><div class="card-content">
+      <h3>Timing Tips</h3>
+      <ul class="mt-2">
+        <li>Pre-workout: 25–60 g carbs + 20–40 g protein</li>
+        <li>Post-workout: 20–40 g protein within 2 hours</li>
+        <li>Hydration: bodyweight (kg) × 30–40 ml per day</li>
+      </ul>
+    </div></div>
+  </div>
+</main>
+
+<footer><div class="container center">© 2025 Powerlifting Hub</div></footer>
+<script>
+// Show a small notice if targetCalories param is present
+document.addEventListener('DOMContentLoaded', ()=>{
+  const params = new URLSearchParams(location.search);
+  const target = parseInt(params.get('targetCalories')||'',10);
+  if(!isNaN(target) && target>0){
+    const box = document.getElementById('calorieNotice');
+    if(box){ box.innerHTML = `<div class="badge">Target ~ ${target.toLocaleString()} kcal</div>`; }
+  }
+});
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

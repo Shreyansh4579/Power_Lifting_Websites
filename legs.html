@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Powerlifting Hub — Legs Workouts</title>
+  <meta name="description" content="Leg workouts for powerlifters: squats, RDLs, lunges, and accessories with form tips."/>
+  <link rel="stylesheet" href="base.css"/>
+  <link rel="stylesheet" href="muscle-groups.css"/>
+  <script defer src="script.js"></script>
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="container">
+    <div class="brand">Powerlifting Hub</div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="workout.html">Workouts</a>
+      <a href="nutrition.html">Nutrition</a>
+      <a href="program.html">Programs</a>
+      <a href="coaching.html">Coaching</a>
+      <a href="progress.html">Progress</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="container section">
+  <div class="hero">
+    <h1>Legs Workouts</h1>
+    <p>Build powerful legs with these strength-focused exercises.</p>
+  </div>
+</header>
+
+<main class="container section">
+  <div class="grid grid-3">
+    <div class="card" onclick="Modal.open('workoutModal','Back Squat', `
+      <p><b>Sets/Reps:</b> 5×3–6</p>
+      <p>Brace 360°, sit between hips, drive up through mid-foot.</p>`)">
+      <img src="Squat .jpg" alt="Squat">
+      <div class="card-content">
+        <h3>Back Squat <span class="badge">Primary</span></h3>
+        <p>King of lower body strength.</p>
+      </div>
+    </div>
+
+    <div class="card" onclick="Modal.open('workoutModal','Romanian Deadlift', `
+      <p><b>Sets/Reps:</b> 3×6–10</p>
+      <p>Soft knees, hinge back, bar against legs, neutral spine.</p>`)">
+      <img src="dead.jpeg" alt="RDL">
+      <div class="card-content">
+        <h3>Romanian Deadlift <span class="badge">Primary</span></h3>
+        <p>Posterior-chain builder with less fatigue than deadlifts.</p>
+      </div>
+    </div>
+
+    <div class="card" onclick="Modal.open('workoutModal','Front Squat', `
+      <p><b>Sets/Reps:</b> 3×5–8</p>
+      <p>Elbows high, chest up, keep torso upright.</p>`)">
+      <img src="squad.jpg" alt="Front Squat">
+      <div class="card-content">
+        <h3>Front Squat <span class="badge">Accessory</span></h3>
+        <p>Quad focus and core stability.</p>
+      </div>
+    </div>
+
+    <div class="card" onclick="Modal.open('workoutModal','Leg Press', `
+      <p><b>Sets/Reps:</b> 3×8–12</p>
+      <p>Full range of motion, feet shoulder-width apart.</p>`)">
+      <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=1200&q=60" alt="Leg Press">
+      <div class="card-content">
+        <h3>Leg Press <span class="badge">Accessory</span></h3>
+        <p>Great for volume and quad development.</p>
+      </div>
+    </div>
+
+    <div class="card" onclick="Modal.open('workoutModal','Walking Lunges', `
+      <p><b>Sets/Reps:</b> 3×20 steps</p>
+      <p>Step forward, lower until back knee nearly touches ground.</p>`)">
+      <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=1200&q=60" alt="Lunges">
+      <div class="card-content">
+        <h3>Walking Lunges <span class="badge">Accessory</span></h3>
+        <p>Unilateral leg strength and stability.</p>
+      </div>
+    </div>
+
+    <div class="card" onclick="Modal.open('workoutModal','Calf Raises', `
+      <p><b>Sets/Reps:</b> 3×15–20</p>
+      <p>Full range of motion, pause at top and bottom.</p>`)">
+      <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=1200&q=60" alt="Calf Raises">
+      <div class="card-content">
+        <h3>Calf Raises <span class="badge">Isolation</span></h3>
+        <p>Build strong, defined calves.</p>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- Modal -->
+<div class="modal-backdrop" id="workoutModal">
+  <div class="modal">
+    <header>
+      <div class="modal-title">Title</div>
+      <button class="close" onclick="Modal.close('workoutModal')">×</button>
+    </header>
+    <div class="content">…</div>
+  </div>
+</div>
+
+<footer><div class="container center">© 2025 Powerlifting Hub</div></footer>
+</body>
+</html> 

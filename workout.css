@@ -1,0 +1,248 @@
+/* ---------- Workout Page Specific Styles ---------- */
+
+/* Workout Library Grid */
+.workout-library {
+  margin-top: 32px;
+}
+
+.workout-card {
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.workout-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--brand), var(--brand-2));
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+  z-index: 2;
+}
+
+.workout-card:hover::before {
+  transform: scaleX(1);
+}
+
+.workout-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.workout-card img {
+  transition: transform 0.3s ease;
+}
+
+.workout-card:hover img {
+  transform: scale(1.05);
+}
+
+/* Modal Enhancements */
+.modal-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.modal .content {
+  line-height: 1.6;
+}
+
+.modal .content h3 {
+  color: var(--brand);
+  margin: 20px 0 12px 0;
+  font-size: 1.2rem;
+}
+
+.modal .content h4 {
+  color: var(--ink);
+  margin: 16px 0 8px 0;
+  font-size: 1.1rem;
+}
+
+.modal .content ul {
+  margin: 12px 0;
+  padding-left: 20px;
+}
+
+.modal .content li {
+  margin-bottom: 8px;
+  color: var(--muted);
+}
+
+.modal .content strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+/* Exercise Details */
+.exercise-details {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 20px;
+  margin: 16px 0;
+}
+
+.exercise-details h4 {
+  color: var(--brand);
+  margin-bottom: 12px;
+  font-size: 1.1rem;
+}
+
+.exercise-details p {
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+/* Technique Tips */
+.technique-tips {
+  background: linear-gradient(135deg, rgba(110, 231, 255, 0.05), rgba(167, 139, 250, 0.05));
+  border: 1px solid rgba(110, 231, 255, 0.2);
+  border-radius: 12px;
+  padding: 20px;
+  margin: 16px 0;
+}
+
+.technique-tips h4 {
+  color: var(--brand);
+  margin-bottom: 12px;
+  font-size: 1.1rem;
+}
+
+.technique-tips ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.technique-tips li {
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+/* Sets and Reps */
+.sets-reps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 12px;
+  margin: 16px 0;
+}
+
+.set-rep-item {
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 12px;
+  text-align: center;
+}
+
+.set-rep-item .number {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--brand);
+  display: block;
+}
+
+.set-rep-item .label {
+  font-size: 0.8rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Muscle Group Tags */
+.muscle-tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 12px 0;
+}
+
+.muscle-tag {
+  background: rgba(110, 231, 255, 0.1);
+  color: var(--brand);
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  border: 1px solid rgba(110, 231, 255, 0.2);
+}
+
+/* Difficulty Level */
+.difficulty {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin: 8px 0;
+}
+
+.difficulty-dots {
+  display: flex;
+  gap: 2px;
+}
+
+.difficulty-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--line);
+}
+
+.difficulty-dot.active {
+  background: var(--brand);
+}
+
+.difficulty-label {
+  font-size: 0.8rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Equipment Requirements */
+.equipment {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 8px 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.equipment-icon {
+  font-size: 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .sets-reps {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .muscle-tags {
+    justify-content: center;
+  }
+  
+  .modal .content {
+    padding: 16px;
+  }
+  
+  .exercise-details,
+  .technique-tips {
+    padding: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .sets-reps {
+    grid-template-columns: 1fr;
+  }
+  
+  .set-rep-item {
+    padding: 8px;
+  }
+}
