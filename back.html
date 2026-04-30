@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Powerlifting Hub — Back Workouts</title>
+  <title>Powerlifting Hub &mdash; Back Workouts</title>
   <meta name="description" content="Back workouts: deadlifts, rows, pulldowns and more for a strong posterior chain."/>
-  <link rel="stylesheet" href="base.css"/>
-  <link rel="stylesheet" href="muscle-groups.css"/>
+  <link rel="stylesheet" href="css/base.css"/>
+  <link rel="stylesheet" href="css/muscle-groups.css"/>
   <script defer src="script.js"></script>
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
@@ -24,6 +24,11 @@
       <a href="progress.html">Progress</a>
       <a href="contact.html">Contact</a>
     </div>
+    <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" onclick="toggleNav()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
   </div>
 </nav>
 
@@ -39,7 +44,7 @@
     <div class="card" onclick="Modal.open('workoutModal','Conventional Deadlift', `
       <p><b>Sets/Reps:</b> 3–5×3–5 heavy</p>
       <p>Hinge pattern: bar over midfoot, lats tight, push floor away, keep bar close.</p>`)">
-      <img src="https://images.unsplash.com/photo-1571731956672-6b5bcb12c886?auto=format&fit=crop&w=1200&q=60" alt="Deadlift">
+      <img src="https://images.unsplash.com/photo-1571731956672-6b5bcb12c886?auto=format&fit=crop&w=1200&q=60" alt="Deadlift" loading="lazy">
       <div class="card-content">
         <h3>Conventional Deadlift <span class="badge">Primary</span></h3>
         <p>Maximizes posterior-chain strength.</p>
@@ -49,7 +54,7 @@
     <div class="card" onclick="Modal.open('workoutModal','Barbell Row', `
       <p><b>Sets/Reps:</b> 4×6–10</p>
       <p>Hinge ~45°, pull to lower ribs, brace core.</p>`)">
-      <img src="https://images.unsplash.com/photo-1598970434795-0c54fe7c0642?auto=format&fit=crop&w=1200&q=60" alt="Row">
+      <img src="https://images.unsplash.com/photo-1598970434795-0c54fe7c0642?auto=format&fit=crop&w=1200&q=60" alt="Row" loading="lazy">
       <div class="card-content">
         <h3>Barbell Row <span class="badge">Primary</span></h3>
         <p>Back thickness & lat strength.</p>
@@ -59,7 +64,7 @@
     <div class="card" onclick="Modal.open('workoutModal','Pull-Ups', `
       <p><b>Sets/Reps:</b> 3×Max reps</p>
       <p>Full range of motion, controlled descent, engage lats.</p>`)">
-      <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=1200&q=60" alt="Pull Ups">
+      <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=1200&q=60" alt="Pull Ups" loading="lazy">
       <div class="card-content">
         <h3>Pull-Ups <span class="badge">Bodyweight</span></h3>
         <p>Upper back and lat development.</p>
@@ -69,7 +74,7 @@
     <div class="card" onclick="Modal.open('workoutModal','Lat Pulldown', `
       <p><b>Sets/Reps:</b> 3×8–12</p>
       <p>Pull to upper chest, squeeze shoulder blades together.</p>`)">
-      <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=1200&q=60" alt="Lat Pulldown">
+      <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=1200&q=60" alt="Lat Pulldown" loading="lazy">
       <div class="card-content">
         <h3>Lat Pulldown <span class="badge">Accessory</span></h3>
         <p>Great lat isolation exercise.</p>
@@ -79,7 +84,7 @@
     <div class="card" onclick="Modal.open('workoutModal','Face Pulls', `
       <p><b>Sets/Reps:</b> 3×12–15</p>
       <p>Pull to forehead, external rotation, retract scapula.</p>`)">
-      <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=1200&q=60" alt="Face Pulls">
+      <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=1200&q=60" alt="Face Pulls" loading="lazy">
       <div class="card-content">
         <h3>Face Pulls <span class="badge">Rehab</span></h3>
         <p>Shoulder health and upper back activation.</p>
@@ -89,7 +94,7 @@
     <div class="card" onclick="Modal.open('workoutModal','Good Mornings', `
       <p><b>Sets/Reps:</b> 3×8–12</p>
       <p>Hinge at hips, keep bar close, maintain neutral spine.</p>`)">
-      <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=1200&q=60" alt="Good Mornings">
+      <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=1200&q=60" alt="Good Mornings" loading="lazy">
       <div class="card-content">
         <h3>Good Mornings <span class="badge">Accessory</span></h3>
         <p>Posterior chain and lower back strength.</p>
@@ -109,6 +114,47 @@
   </div>
 </div>
 
-<footer><div class="container center">© 2025 Powerlifting Hub</div></footer>
+<footer class="footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Powerlifting Hub</h3>
+        <p>Professional strength training solutions for athletes at every level.</p>
+        <div class="social-links">
+          <a href="#" aria-label="Instagram">&#128241;</a>
+          <a href="#" aria-label="YouTube">&#128250;</a>
+          <a href="#" aria-label="LinkedIn">&#128188;</a>
+        </div>
+      </div>
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="workout.html">Workouts</a></li>
+          <li><a href="nutrition.html">Nutrition</a></li>
+          <li><a href="program.html">Programs</a></li>
+          <li><a href="coaching.html">Coaching</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="progress.html">Progress Tracker</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms of Service</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Contact Info</h4>
+        <p>&#128205; Chandigarh, India</p>
+        <p>&#128231; shrey4579@gmail.com</p>
+        <p>&#128241; +91 6006683138</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Powerlifting Hub. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
 </body>
 </html> 

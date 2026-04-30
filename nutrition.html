@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Powerlifting Hub — Nutrition</title>
+  <title>Powerlifting Hub &mdash; Nutrition</title>
   <meta name="description" content="Nutrition database, macros, and daily targets to fuel powerlifting progress."/>
-  <link rel="stylesheet" href="base.css"/>
-  <link rel="stylesheet" href="nutrition.css"/>
+  <link rel="stylesheet" href="css/base.css"/>
+  <link rel="stylesheet" href="css/nutrition.css"/>
   <script defer src="script.js"></script>
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
@@ -24,6 +24,11 @@
       <a href="progress.html">Progress</a>
       <a href="contact.html">Contact</a>
     </div>
+    <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" onclick="toggleNav()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
   </div>
 </nav>
 
@@ -192,7 +197,48 @@
   </div>
 </main>
 
-<footer><div class="container center">© 2025 Powerlifting Hub</div></footer>
+<footer class="footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Powerlifting Hub</h3>
+        <p>Professional strength training solutions for athletes at every level.</p>
+        <div class="social-links">
+          <a href="#" aria-label="Instagram">&#128241;</a>
+          <a href="#" aria-label="YouTube">&#128250;</a>
+          <a href="#" aria-label="LinkedIn">&#128188;</a>
+        </div>
+      </div>
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="workout.html">Workouts</a></li>
+          <li><a href="nutrition.html">Nutrition</a></li>
+          <li><a href="program.html">Programs</a></li>
+          <li><a href="coaching.html">Coaching</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="progress.html">Progress Tracker</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms of Service</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Contact Info</h4>
+        <p>&#128205; Chandigarh, India</p>
+        <p>&#128231; shrey4579@gmail.com</p>
+        <p>&#128241; +91 6006683138</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Powerlifting Hub. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
 <script>
 // Show a small notice if targetCalories param is present
 document.addEventListener('DOMContentLoaded', ()=>{
@@ -206,8 +252,6 @@ document.addEventListener('DOMContentLoaded', ()=>{
 </script>
 </body>
 </html>
-
-
 
 
 

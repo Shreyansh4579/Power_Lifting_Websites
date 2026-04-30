@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Powerlifting Hub — Shoulders Workouts</title>
+  <title>Powerlifting Hub &mdash; Shoulders Workouts</title>
   <meta name="description" content="Shoulder workouts for powerlifters: overhead press, raises, and more with technique cues."/>
-  <link rel="stylesheet" href="base.css"/>
-  <link rel="stylesheet" href="muscle-groups.css"/>
+  <link rel="stylesheet" href="css/base.css"/>
+  <link rel="stylesheet" href="css/muscle-groups.css"/>
   <script defer src="script.js"></script>
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
@@ -24,6 +24,11 @@
       <a href="progress.html">Progress</a>
       <a href="contact.html">Contact</a>
     </div>
+    <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" onclick="toggleNav()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
   </div>
 </nav>
 
@@ -39,7 +44,7 @@
     <div class="card" onclick="Modal.open('workoutModal','Overhead Press', `
       <p><b>Sets/Reps:</b> 4×5–8</p>
       <p>Ribs down, glutes tight, head through at lockout.</p>`)">
-      <img src="https://images.unsplash.com/photo-1558611848-73f7eb4001a1?auto=format&fit=crop&w=1200&q=60" alt="OHP">
+      <img src="https://images.unsplash.com/photo-1558611848-73f7eb4001a1?auto=format&fit=crop&w=1200&q=60" alt="OHP" loading="lazy">
       <div class="card-content">
         <h3>Overhead Press <span class="badge">Primary</span></h3>
         <p>Vertical press for delts & triceps.</p>
@@ -49,7 +54,7 @@
     <div class="card" onclick="Modal.open('workoutModal','Lateral Raises', `
       <p><b>Sets/Reps:</b> 3×12–15</p>
       <p>Light weight, controlled movement, slight bend in elbows.</p>`)">
-      <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=1200&q=60" alt="Lateral Raises">
+      <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=1200&q=60" alt="Lateral Raises" loading="lazy">
       <div class="card-content">
         <h3>Lateral Raises <span class="badge">Isolation</span></h3>
         <p>Builds shoulder width and definition.</p>
@@ -59,7 +64,7 @@
     <div class="card" onclick="Modal.open('workoutModal','Front Raises', `
       <p><b>Sets/Reps:</b> 3×10–12</p>
       <p>Keep core tight, controlled movement, don't swing.</p>`)">
-      <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=1200&q=60" alt="Front Raises">
+      <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=1200&q=60" alt="Front Raises" loading="lazy">
       <div class="card-content">
         <h3>Front Raises <span class="badge">Isolation</span></h3>
         <p>Anterior deltoid development.</p>
@@ -69,7 +74,7 @@
     <div class="card" onclick="Modal.open('workoutModal','Rear Delt Flyes', `
       <p><b>Sets/Reps:</b> 3×12–15</p>
       <p>Bend forward, squeeze shoulder blades, light weight.</p>`)">
-      <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=1200&q=60" alt="Rear Delt Flyes">
+      <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=1200&q=60" alt="Rear Delt Flyes" loading="lazy">
       <div class="card-content">
         <h3>Rear Delt Flyes <span class="badge">Isolation</span></h3>
         <p>Posterior deltoid and upper back.</p>
@@ -79,7 +84,7 @@
     <div class="card" onclick="Modal.open('workoutModal','Upright Rows', `
       <p><b>Sets/Reps:</b> 3×8–12</p>
       <p>Keep bar close to body, elbows high, controlled movement.</p>`)">
-      <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=1200&q=60" alt="Upright Rows">
+      <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=1200&q=60" alt="Upright Rows" loading="lazy">
       <div class="card-content">
         <h3>Upright Rows <span class="badge">Compound</span></h3>
         <p>Traps and shoulder development.</p>
@@ -89,7 +94,7 @@
     <div class="card" onclick="Modal.open('workoutModal','Arnold Press', `
       <p><b>Sets/Reps:</b> 3×8–12</p>
       <p>Rotate palms during movement, full range of motion.</p>`)">
-      <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=1200&q=60" alt="Arnold Press">
+      <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=1200&q=60" alt="Arnold Press" loading="lazy">
       <div class="card-content">
         <h3>Arnold Press <span class="badge">Compound</span></h3>
         <p>Rotational movement for shoulder health.</p>
@@ -109,6 +114,47 @@
   </div>
 </div>
 
-<footer><div class="container center">© 2025 Powerlifting Hub</div></footer>
+<footer class="footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Powerlifting Hub</h3>
+        <p>Professional strength training solutions for athletes at every level.</p>
+        <div class="social-links">
+          <a href="#" aria-label="Instagram">&#128241;</a>
+          <a href="#" aria-label="YouTube">&#128250;</a>
+          <a href="#" aria-label="LinkedIn">&#128188;</a>
+        </div>
+      </div>
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="workout.html">Workouts</a></li>
+          <li><a href="nutrition.html">Nutrition</a></li>
+          <li><a href="program.html">Programs</a></li>
+          <li><a href="coaching.html">Coaching</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="progress.html">Progress Tracker</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms of Service</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Contact Info</h4>
+        <p>&#128205; Chandigarh, India</p>
+        <p>&#128231; shrey4579@gmail.com</p>
+        <p>&#128241; +91 6006683138</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Powerlifting Hub. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
 </body>
 </html> 

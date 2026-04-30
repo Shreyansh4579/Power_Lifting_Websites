@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Powerlifting Hub — Coaching</title>
+  <title>Powerlifting Hub &mdash; Coaching</title>
   <meta name="description" content="1-on-1 powerlifting coaching: custom programming, technique analysis, nutrition guidance, and meet prep."/>
-  <link rel="stylesheet" href="base.css"/>
-  <link rel="stylesheet" href="coaching.css"/>
+  <link rel="stylesheet" href="css/base.css"/>
+  <link rel="stylesheet" href="css/coaching.css"/>
   <script defer src="script.js"></script>
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
@@ -24,6 +24,11 @@
       <a href="progress.html">Progress</a>
       <a href="contact.html">Contact</a>
     </div>
+    <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" onclick="toggleNav()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
   </div>
 </nav>
 
@@ -55,7 +60,7 @@
     <div class="coaches-grid">
       <div class="coach-card">
         <div class="coach-image">
-          <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=400&q=80" alt="Coach Shreyansh Rai">
+          <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=400&q=80" alt="Coach Shreyansh Rai" loading="lazy">
         </div>
         <div class="coach-info">
           <h3>Shreyansh Rai</h3>
@@ -260,7 +265,48 @@
   </section>
 </main>
 
-<footer><div class="container center">© 2025 Powerlifting Hub</div></footer>
+<footer class="footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Powerlifting Hub</h3>
+        <p>Professional strength training solutions for athletes at every level.</p>
+        <div class="social-links">
+          <a href="#" aria-label="Instagram">&#128241;</a>
+          <a href="#" aria-label="YouTube">&#128250;</a>
+          <a href="#" aria-label="LinkedIn">&#128188;</a>
+        </div>
+      </div>
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="workout.html">Workouts</a></li>
+          <li><a href="nutrition.html">Nutrition</a></li>
+          <li><a href="program.html">Programs</a></li>
+          <li><a href="coaching.html">Coaching</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="progress.html">Progress Tracker</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms of Service</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Contact Info</h4>
+        <p>&#128205; Chandigarh, India</p>
+        <p>&#128231; shrey4579@gmail.com</p>
+        <p>&#128241; +91 6006683138</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Powerlifting Hub. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
 
 <script>
 // FAQ Toggle Functionality

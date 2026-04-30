@@ -283,10 +283,10 @@ window.calcBMI = function() {
 
         <div style="display: flex; gap: 12px; flex-wrap: wrap; margin: 20px 0;">
           <a class="btn" href="nutrition.html?targetCalories=${targetCalories}" style="flex: 1; min-width: 200px; text-align: center;">
-            🍽️ View foods around ${formatNumber(targetCalories)} kcal/day
+            View foods around ${formatNumber(targetCalories)} kcal/day
           </a>
           <a class="btn outline" href="nutrition.html?targetCalories=${perMeal}" style="flex: 1; min-width: 200px; text-align: center;">
-            📊 Per meal ~ ${formatNumber(perMeal)} kcal
+            Per meal ~ ${formatNumber(perMeal)} kcal
           </a>
         </div>
 
@@ -371,10 +371,31 @@ window.validateStartForm = function() {
   return true;
 };
 
+window.submitContact = function(event) {
+  event.preventDefault();
+  const form = event.target;
+  const status = document.getElementById('contactStatus');
+  const data = new FormData(form);
+  const name = data.get('name') || '';
+  const email = data.get('email') || '';
+  const message = data.get('message') || '';
+  const subject = encodeURIComponent(`Powerlifting Hub inquiry from ${name}`);
+  const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`);
+
+  if (status) {
+    status.textContent = 'Opening your email app with this message ready to send.';
+    status.classList.add('show');
+  }
+
+  window.location.href = `mailto:shrey4579@gmail.com?subject=${subject}&body=${body}`;
+};
+
 /* Navigation Toggle */
 window.toggleNav = function() {
   const nav = document.querySelector('.nav');
-  nav.classList.toggle('active');
+  const toggle = document.querySelector('.nav-toggle');
+  const isOpen = nav.classList.toggle('active');
+  toggle?.setAttribute('aria-expanded', String(isOpen));
 };
 
 /* Enhanced Homepage Features */
@@ -635,6 +656,7 @@ document.addEventListener('DOMContentLoaded', function() {
         !nav.contains(e.target) && 
         !navToggle.contains(e.target)) {
       nav.classList.remove('active');
+      navToggle.setAttribute('aria-expanded', 'false');
     }
   });
   
@@ -642,7 +664,9 @@ document.addEventListener('DOMContentLoaded', function() {
   document.querySelectorAll('.nav-links a').forEach(link => {
     link.addEventListener('click', () => {
       const nav = document.querySelector('.nav');
+      const navToggle = document.querySelector('.nav-toggle');
       nav.classList.remove('active');
+      navToggle?.setAttribute('aria-expanded', 'false');
     });
   });
 });
