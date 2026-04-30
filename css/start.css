@@ -55,6 +55,27 @@
   min-width: 0;
 }
 
+.form-hint {
+  color: var(--muted);
+  font-size: 0.85rem;
+  margin-top: 6px;
+}
+
+.field-unit {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.field-unit input {
+  flex: 1;
+}
+
+.field-unit select {
+  width: 100px;
+  min-width: 100px;
+}
+
 /* Button Improvements */
 .start-form .btn {
   margin-top: 20px;
@@ -88,5 +109,63 @@
 
 .bmi-results .card {
   animation: fadeInUp 0.4s ease-out;
+}
+
+.program-result {
+  display: none;
+}
+
+.program-result.show {
+  display: block;
+}
+
+.generated-program {
+  background: linear-gradient(135deg, rgba(110, 231, 255, 0.08), rgba(167, 139, 250, 0.08));
+  border: 1px solid rgba(110, 231, 255, 0.22);
+  border-radius: 16px;
+  padding: 24px;
+}
+
+.generated-program h3 {
+  color: var(--brand);
+  margin-bottom: 8px;
+}
+
+.program-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 12px;
+  margin: 20px 0;
+}
+
+.summary-tile,
+.training-day {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 14px;
+}
+
+.summary-tile strong {
+  display: block;
+  color: var(--brand);
+  font-size: 1.2rem;
+}
+
+.training-week {
+  display: grid;
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.training-day h4 {
+  color: var(--ink);
+  margin-bottom: 10px;
+}
+
+.training-day ul {
+  color: var(--muted);
+  padding-left: 18px;
+  line-height: 1.7;
 }
 

@@ -371,6 +371,261 @@ window.validateStartForm = function() {
   return true;
 };
 
+function roundLoad(value, unit = 'lb') {
+  const increment = unit === 'kg' ? 2.5 : 5;
+  return Math.round(value / increment) * increment;
+}
+
+function formatLoad(value, unit = 'lb') {
+  const rounded = roundLoad(value, unit);
+  return `${Number.isInteger(rounded) ? rounded : rounded.toFixed(1)} ${unit === 'kg' ? 'kg' : 'lbs'}`;
+}
+
+function escapeHTML(value) {
+  return String(value).replace(/[&<>"']/g, char => ({
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#039;'
+  }[char]));
+}
+
+function convertToUnit(value, fromUnit, toUnit) {
+  if (!value || !fromUnit || fromUnit === toUnit) return value;
+  if (fromUnit === 'kg' && toUnit === 'lb') return value * 2.2046226218;
+  if (fromUnit === 'lb' && toUnit === 'kg') return value / 2.2046226218;
+  return value;
+}
+
+function getAccessoryBlock(weakpoint, equipment) {
+  const accessories = {
+    squat: ['Paused Squat 3x4', 'Leg Press 3x10', 'Split Squat 3x8/side'],
+    bench: ['Close-Grip Bench 3x6', 'DB Press 3x10', 'Triceps Pushdown 3x12'],
+    deadlift: ['Block Pull 3x4', 'Romanian Deadlift 3x8', 'Barbell Row 4x8'],
+    technique: ['Tempo Squat 3x5', 'Paused Bench 3x5', 'Deadlift Singles 6x1 @ RPE 6']
+  };
+
+  if (equipment === 'home') {
+    return {
+      squat: ['Paused Squat 3x4', 'Bulgarian Split Squat 3x8/side', 'Plank 3x45 sec'],
+      bench: ['Close-Grip Bench 3x6', 'Push-Up 3xAMRAP', 'DB Row 3x10'],
+      deadlift: ['Romanian Deadlift 3x8', 'Barbell Row 4x8', 'Back Extension 3x12'],
+      technique: ['Tempo Squat 3x5', 'Paused Bench 3x5', 'Deadlift Singles 6x1 @ RPE 6']
+    }[weakpoint];
+  }
+
+  return accessories[weakpoint];
+}
+
+function buildProgram(data) {
+  const trainingMaxes = {
+    squat: roundLoad(data.squatMax * 0.9, data.unit),
+    bench: roundLoad(data.benchMax * 0.9, data.unit),
+    deadlift: roundLoad(data.deadliftMax * 0.9, data.unit)
+  };
+
+  const intensity = data.goal === 'peak' ? 0.78 : data.goal === 'volume' ? 0.68 : 0.72;
+  const benchIntensity = data.goal === 'volume' ? intensity + 0.02 : intensity;
+  const repScheme = data.goal === 'peak' ? '4x3' : data.goal === 'volume' ? '4x8' : '5x5';
+  const accessoryBlock = getAccessoryBlock(data.weakpoint, data.equip);
+
+  const sessions = [
+    {
+      name: 'Day 1 - Squat Focus',
+      lifts: [
+        `Squat ${repScheme} @ ${formatLoad(trainingMaxes.squat * intensity, data.unit)}`,
+        `Bench Technique 3x6 @ ${formatLoad(trainingMaxes.bench * 0.62, data.unit)}`,
+        accessoryBlock[0]
+      ]
+    },
+    {
+      name: 'Day 2 - Bench Focus',
+      lifts: [
+        `Bench Press ${repScheme} @ ${formatLoad(trainingMaxes.bench * benchIntensity, data.unit)}`,
+        `Deadlift Speed 5x2 @ ${formatLoad(trainingMaxes.deadlift * 0.6, data.unit)}`,
+        accessoryBlock[1]
+      ]
+    },
+    {
+      name: 'Day 3 - Deadlift Focus',
+      lifts: [
+        `Deadlift ${data.goal === 'peak' ? '5x2' : '4x5'} @ ${formatLoad(trainingMaxes.deadlift * intensity, data.unit)}`,
+        `Squat Volume 3x6 @ ${formatLoad(trainingMaxes.squat * 0.62, data.unit)}`,
+        accessoryBlock[2]
+      ]
+    }
+  ];
+
+  if (data.days >= 4) {
+    sessions.push({
+      name: 'Day 4 - Upper Volume',
+      lifts: [
+        `Bench Press 4x6 @ ${formatLoad(trainingMaxes.bench * 0.65, data.unit)}`,
+        'Overhead Press 3x8',
+        'Rows 4x10'
+      ]
+    });
+  }
+
+  if (data.days >= 5) {
+    sessions.push({
+      name: 'Day 5 - Weak Point Builder',
+      lifts: [
+        accessoryBlock[0],
+        accessoryBlock[1],
+        'Core Work 4 rounds'
+      ]
+    });
+  }
+
+  if (data.days >= 6) {
+    sessions.push({
+      name: 'Day 6 - Recovery Technique',
+      lifts: [
+        `Squat Technique 6x2 @ ${formatLoad(trainingMaxes.squat * 0.55, data.unit)}`,
+        `Bench Technique 6x3 @ ${formatLoad(trainingMaxes.bench * 0.55, data.unit)}`,
+        'Mobility + Core 20 min'
+      ]
+    });
+  }
+
+  return {
+    createdAt: new Date().toISOString(),
+    ...data,
+    trainingMaxes,
+    sessions,
+    progression: data.goal === 'peak'
+      ? `Add ${data.unit === 'kg' ? '1-2.5 kg' : '2.5-5 lbs'} weekly while bar speed stays sharp. Reduce accessories in week 4.`
+      : data.goal === 'volume'
+        ? `Add reps first, then add ${data.unit === 'kg' ? '2.5 kg' : '5 lbs'} when all sets feel like RPE 8 or lower.`
+        : `Add ${data.unit === 'kg' ? '2.5 kg' : '5 lbs'} to squat/deadlift and ${data.unit === 'kg' ? '1-2.5 kg' : '2.5-5 lbs'} to bench each week when all sets are completed.`
+  };
+}
+
+function renderProgramResult(program) {
+  const output = document.getElementById('programResult');
+  if (!output) return;
+
+  output.classList.add('show');
+  output.innerHTML = `
+    <div class="generated-program">
+      <h3>Your Week 1 Program</h3>
+      <p>Saved to your dashboard. Use these loads as starting points and adjust by feel if technique breaks down.</p>
+      <div class="program-summary">
+        <div class="summary-tile"><strong>${program.days}</strong><span>days/week</span></div>
+        <div class="summary-tile"><strong>${program.bodyWeight}</strong><span>body weight ${program.bodyWeightUnit === 'kg' ? 'kg' : 'lbs'}</span></div>
+        <div class="summary-tile"><strong>${program.level}</strong><span>level</span></div>
+        <div class="summary-tile"><strong>${program.goal}</strong><span>goal</span></div>
+        <div class="summary-tile"><strong>${program.weakpoint}</strong><span>focus</span></div>
+      </div>
+      <div class="training-week">
+        ${program.sessions.map(session => `
+          <div class="training-day">
+            <h4>${escapeHTML(session.name)}</h4>
+            <ul>${session.lifts.map(lift => `<li>${escapeHTML(lift)}</li>`).join('')}</ul>
+          </div>
+        `).join('')}
+      </div>
+      <p class="mt-2"><strong>Progression:</strong> ${escapeHTML(program.progression)}</p>
+      <div class="mt-2" style="display:flex;gap:10px;flex-wrap:wrap">
+        <a class="btn" href="progress.html">View Dashboard</a>
+        <a class="btn outline" href="program.html">Compare Programs</a>
+      </div>
+    </div>
+  `;
+  output.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+window.generateProgram = function(event) {
+  event.preventDefault();
+  const data = {
+    level: document.getElementById('level')?.value || 'beginner',
+    days: parseInt(document.getElementById('days')?.value || '3', 10),
+    bodyWeight: parseFloat(document.getElementById('bodyWeight')?.value || '0'),
+    bodyWeightUnit: document.getElementById('bodyWeightUnit')?.value || 'kg',
+    equip: document.getElementById('equip')?.value || 'commercial',
+    goal: document.getElementById('goal')?.value || 'balanced',
+    weakpoint: document.getElementById('weakpoint')?.value || 'technique',
+    squatMax: parseFloat(document.getElementById('squatMax')?.value || '0'),
+    squatMaxUnit: document.getElementById('squatMaxUnit')?.value || 'kg',
+    benchMax: parseFloat(document.getElementById('benchMax')?.value || '0'),
+    benchMaxUnit: document.getElementById('benchMaxUnit')?.value || 'kg',
+    deadliftMax: parseFloat(document.getElementById('deadliftMax')?.value || '0'),
+    deadliftMaxUnit: document.getElementById('deadliftMaxUnit')?.value || 'kg'
+  };
+
+  if (!data.bodyWeight || !data.squatMax || !data.benchMax || !data.deadliftMax) {
+    alert('Please enter your body weight, squat, bench, and deadlift maxes.');
+    return;
+  }
+
+  data.unit = data.squatMaxUnit || data.benchMaxUnit || data.deadliftMaxUnit || 'kg';
+  data.squatMax = convertToUnit(data.squatMax, data.squatMaxUnit, data.unit);
+  data.benchMax = convertToUnit(data.benchMax, data.benchMaxUnit, data.unit);
+  data.deadliftMax = convertToUnit(data.deadliftMax, data.deadliftMaxUnit, data.unit);
+
+  const program = buildProgram(data);
+  localStorage.setItem('generatedProgram', JSON.stringify(program));
+  renderProgramResult(program);
+};
+
+window.renderGeneratedProgramDashboard = function() {
+  const panel = document.getElementById('programDashboard');
+  if (!panel) return;
+
+  const saved = localStorage.getItem('generatedProgram');
+  if (!saved) {
+    panel.innerHTML = `
+      <div class="dashboard-empty">
+        <p>No generated program yet.</p>
+        <a class="btn" href="start.html">Generate Program</a>
+      </div>
+    `;
+    return;
+  }
+
+  let program;
+  try {
+    program = JSON.parse(saved);
+  } catch (error) {
+    localStorage.removeItem('generatedProgram');
+    panel.innerHTML = `
+      <div class="dashboard-empty">
+        <p>Your saved program could not be loaded.</p>
+        <a class="btn" href="start.html">Generate Program</a>
+      </div>
+    `;
+    return;
+  }
+
+  panel.innerHTML = `
+    <div class="dashboard-grid">
+      <div class="dashboard-card">
+        <h3>${escapeHTML(program.level)} ${escapeHTML(program.goal)} plan</h3>
+        <p>Focus: ${escapeHTML(program.weakpoint)} &middot; ${program.days} days/week</p>
+        <div class="dashboard-metrics">
+          <div class="dashboard-metric"><strong>${formatLoad(program.trainingMaxes.squat, program.unit)}</strong><span>Squat TM</span></div>
+          <div class="dashboard-metric"><strong>${formatLoad(program.trainingMaxes.bench, program.unit)}</strong><span>Bench TM</span></div>
+          <div class="dashboard-metric"><strong>${formatLoad(program.trainingMaxes.deadlift, program.unit)}</strong><span>Deadlift TM</span></div>
+        </div>
+        <p class="mt-2">Body weight: ${escapeHTML(program.bodyWeight)} ${program.bodyWeightUnit === 'kg' ? 'kg' : 'lbs'}</p>
+        <p class="mt-2">${escapeHTML(program.progression)}</p>
+        <a class="btn mt-2" href="start.html">Regenerate Plan</a>
+      </div>
+      <div class="dashboard-card">
+        <h4>This Week</h4>
+        ${program.sessions.map(session => `
+          <div class="dashboard-day">
+            <strong>${escapeHTML(session.name)}</strong>
+            <ul>${session.lifts.map(lift => `<li>${escapeHTML(lift)}</li>`).join('')}</ul>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  `;
+};
+
 window.submitContact = function(event) {
   event.preventDefault();
   const form = event.target;
@@ -645,6 +900,10 @@ document.addEventListener('DOMContentLoaded', function() {
   // Initialize enhanced form validation
   if (typeof window.enhancedFormValidation === 'function') {
     window.enhancedFormValidation();
+  }
+
+  if (typeof window.renderGeneratedProgramDashboard === 'function') {
+    window.renderGeneratedProgramDashboard();
   }
   
   // Close mobile nav when clicking outside

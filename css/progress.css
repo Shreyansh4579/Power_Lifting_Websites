@@ -1,5 +1,73 @@
 /* ---------- Progress Tracker Styles ---------- */
 
+.training-dashboard {
+  margin-bottom: 64px;
+}
+
+.dashboard-panel {
+  background: linear-gradient(135deg, var(--panel-2) 0%, var(--panel) 100%);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 24px;
+}
+
+.dashboard-empty {
+  text-align: center;
+  color: var(--muted);
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 2fr);
+  gap: 24px;
+}
+
+.dashboard-card {
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 18px;
+}
+
+.dashboard-card h3,
+.dashboard-card h4 {
+  color: var(--ink);
+  margin-bottom: 12px;
+}
+
+.dashboard-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.dashboard-metric {
+  background: rgba(110, 231, 255, 0.08);
+  border: 1px solid rgba(110, 231, 255, 0.18);
+  border-radius: 10px;
+  padding: 12px;
+  text-align: center;
+}
+
+.dashboard-metric strong {
+  display: block;
+  color: var(--brand);
+  font-size: 1.2rem;
+}
+
+.dashboard-day {
+  border-top: 1px solid var(--line);
+  padding-top: 12px;
+  margin-top: 12px;
+}
+
+.dashboard-day ul {
+  color: var(--muted);
+  line-height: 1.7;
+  padding-left: 18px;
+}
+
 /* Stats Overview */
 .stats-overview {
   margin-bottom: 64px;
@@ -296,6 +364,10 @@
 @media (max-width: 768px) {
   .stats-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .dashboard-grid {
+    grid-template-columns: 1fr;
   }
   
   .pr-grid {
